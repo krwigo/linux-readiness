@@ -172,14 +172,7 @@ function Card({ data, onNext }) {
   );
 }
 
-function updateTheme() {
-  const colorMode =
-    window.matchMedia("(prefers-color-scheme: dark)").matches ||
-    localStorage.getItem("theme") == "dark"
-      ? "dark"
-      : "light";
-  document.documentElement.setAttribute("data-bs-theme", colorMode);
-}
+const themes = ["auto", "light", "dark"];
 
 function Main() {
   const [value, setValue] = useState(1);
@@ -192,12 +185,28 @@ function Main() {
 
   const onClick = useCallback((ev) => setValue((prev) => prev + 1));
 
+  const [theme, setTheme] = useState(() => {
+    let value = localStorage.getItem("theme");
+    return themes.includes(value) ? value : "auto";
+  });
+
+  const nextTheme = () =>
+    setTheme((prev) => {
+      let index = (Math.max(0, themes.indexOf(prev)) + 1) % themes.length;
+      let value = themes[index] || "auto";
+      localStorage.setItem("theme", value);
+      return value;
+    });
+
   useEffect(() => {
-    updateTheme();
-    const m = window.matchMedia("(prefers-color-scheme: dark)");
-    m.addEventListener("change", updateTheme);
-    return () => m.removeEventListener("change", updateTheme);
-  }, []);
+    const media = window.matchMedia("(prefers-color-scheme: dark)");
+    document.documentElement.setAttribute(
+      "data-bs-theme",
+      theme == "auto" && media.matches ? "dark" : theme
+    );
+    // media.addEventListener("change", console.log);
+    // return () => media.removeEventListener("change", console.log);
+  }, [theme]);
 
   return (
     <div>
@@ -224,15 +233,8 @@ function Main() {
         >
           Materials
         </a>
-        <a
-          href="#"
-          onClick={(e) => {
-            e.preventDefault();
-            let dark = localStorage.getItem("theme") == "dark";
-            updateTheme(localStorage.setItem("theme", dark ? "" : "dark"));
-          }}
-        >
-          Theme
+        <a href="#" onClick={(e) => nextTheme(e.preventDefault())}>
+          Theme: {theme}
         </a>
       </div>
       {dataset.slice(index, index + 1).map((data, i) => (
