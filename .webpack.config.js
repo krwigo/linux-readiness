@@ -1,6 +1,7 @@
 const path = require("path");
 module.exports = {
-  mode: "production",
+  mode: "development",
+  // mode: "production",
   entry: [
     path.resolve(__dirname, "index.html"),
     path.resolve(__dirname, "frontend.js"),
