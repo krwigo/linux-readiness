@@ -1,14 +1,12 @@
 const path = require("path");
 module.exports = {
-  mode: "development",
-  // mode: "production",
+  mode: "production",
   entry: [
     path.resolve(__dirname, "index.html"),
     path.resolve(__dirname, "frontend.js"),
   ],
   output: {
-    // path: path.resolve(__dirname, "dist"),
-    // filename: "main.js",
+    path: path.resolve(__dirname, "docs"),
     clean: true,
   },
   module: {
@@ -43,27 +41,8 @@ module.exports = {
   },
   devServer: {
     allowedHosts: "all",
-    // historyApiFallback: true,
-    // allowedHosts: "all",
-    // proxy: {
-    //   "/": {
-    //     target: "https://fixme",
-    //     changeOrigin: true,
-    //   },
-    // },
   },
   performance: {
     hints: false,
-    // maxEntrypointSize: 512000,
-    // maxAssetSize: 512000,
   },
-  // optimization: {
-  //   minimize: false,
-  // },
-  // stats: {
-  //   logging: "info",
-  //   warnings: true,
-  // },
-  // plugins: [
-  // ],
 };
