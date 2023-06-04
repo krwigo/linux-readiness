@@ -51,6 +51,7 @@ function Typer({ data }) {
     );
     const typed = new Typed(el.current, {
       strings: [render.strings],
+      typeSpeed: +localStorage.getItem("speed") || 0,
     });
     return () => typed.destroy();
   }, [data]);
@@ -59,9 +60,9 @@ function Typer({ data }) {
     <>
       <div className="terminal">
         <div className="toolbar">
-          <button />
-          <button />
-          <button />
+          <button onClick={() => localStorage.setItem("speed", "-100")} />
+          <button onClick={() => localStorage.setItem("speed", "40")} />
+          <button onClick={() => localStorage.setItem("speed", "100")} />
         </div>
         <div className="typer">
           <span ref={el} />

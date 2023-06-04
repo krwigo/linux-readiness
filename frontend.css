@@ -28,6 +28,45 @@ html {
   font-weight: bold;
 }
 
+.nav a.objectives {
+  position: relative;
+}
+
+.nav a.objectives:before {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  content: "^";
+  width: 10px;
+  margin-left: -5px;
+  animation-name: shift, fade;
+  animation-duration: 1s, 30s;
+  animation-iteration-count: infinite;
+  animation-delay: 0s, 30s;
+  opacity: 0;
+}
+
+@keyframes shift {
+  from {
+    top: 100%;
+  }
+  to {
+    top: 80%;
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .container {
   max-width: 768px;
   margin: auto auto;
