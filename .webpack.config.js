@@ -7,6 +7,7 @@ module.exports = {
   ],
   output: {
     path: path.resolve(__dirname, "docs"),
+    publicPath: "/linux-readiness/",
     clean: true,
   },
   module: {
