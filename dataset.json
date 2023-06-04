@@ -1,0 +1,101 @@
+[
+  {
+    "prompt": "What option(s) of the ls command display recursive contents?",
+    "accept": ["-R"],
+    "reject": ["-re", "-Rec", "rr", "-r"],
+    "explain": "The ls command lists directory contents. The lowercase <strong>-r</strong> or <strong>--reverse</strong> option reverses the list order. The uppercase <strong>-R</strong> or <strong>--recursive</strong> option lists subdirectories recursively. While most commands support a recursive option (-R), the cp (copy) command aliases both cases together for convenience.",
+    "links": [
+      {
+        "title": "Learning Materials - Topic 2",
+        "href": "https://learning.lpi.org/en/learning-materials/010-160/2/2.1/2.1_01/"
+      },
+      {
+        "title": "ls(1) - Linux man page",
+        "href": "https://linux.die.net/man/1/ls"
+      },
+      {
+        "title": "cp(1) - Linux man page",
+        "href": "https://linux.die.net/man/1/cp"
+      },
+      {
+        "title": "pwd(1) - Linux man page",
+        "href": "https://linux.die.net/man/1/pwd"
+      }
+    ],
+    "terminal": [
+      {
+        "PWD": "/etc/skel",
+        "USERNAME": "developer",
+        "HOME": "/home/developer"
+      },
+      "$PS1 cd ~^100",
+      { "PWD": "~" },
+      "$PS1 pwd",
+      "$HOME",
+      "$PS1 ls",
+      "<span class=d>Desktop</span> <span class=d>Documents</span> <span class=d>Pictures</span>",
+      "$PS1 ls -r",
+      "<span class=d>Pictures</span> <span class=d>Documents</span> <span class=d>Desktop</span>",
+      "$PS1 ls -R",
+      ".:",
+      "<span class=d>Desktop</span> <span class=d>Documents</span> <span class=d>Pictures</span>",
+      "",
+      "./Desktop:",
+      "spreadsheet.odt homework.txt",
+      "",
+      "./Documents:",
+      "homework(2).txt courses.txt textbook.pdf",
+      "",
+      "./Pictures:",
+      "vacation.jpg",
+      "$PS1"
+    ]
+  },
+  {
+    "prompt": "Which statement(s) are true regarding the kernel ring buffer?",
+    "accept": [
+      "It is constrained by limited memory space",
+      "The oldest entries are discarded first"
+    ],
+    "reject": [
+      "It transports data packets across Local Area Networks",
+      "The grep command is used to access buffer entries",
+      "Entries persist after rebooting the system"
+    ],
+    "explain": "The Linux kernel initializes the <strong>kernel ring buffer</strong> as a logging mechanism. Kernel modules, compiled or inserted, may verbosely add to the buffer. It's a limited size buffer because the early boot stage doesn't have access to disk storage yet. The memory allocated for the kernel ring buffer cannot be simultaneously used by programs.",
+    "links": [
+      {
+        "title": "Learning Materials - Topic 4.3",
+        "href": "https://learning.lpi.org/en/learning-materials/010-160/4/4.3/4.3_02/"
+      },
+      {
+        "title": "dmesg(1) - Linux man page",
+        "href": "https://linux.die.net/man/1/dmesg"
+      },
+      {
+        "title": "lsmod(8) - Linux man page",
+        "href": "https://linux.die.net/man/8/lsmod"
+      },
+      {
+        "title": "modprobe(8) - Linux man page",
+        "href": "https://linux.die.net/man/8/modprobe"
+      }
+    ],
+    "terminal": [
+      "$PS1 dmesg | head -n 1",
+      "[    0.000000] Linux version 5.10.0-23-amd64 (debian-kernel@lists.debian.org) (gcc-10 (Debian 10.2.1-6) 10.2.1 20210110, GNU ld (GNU Binutils for Debian) 2.35.2) #1 SMP Debian 5.10.179-1 (2023-05-12)",
+      "$PS1 dmesg | grep sda",
+      "[    3.006785] sd 2:0:0:0: [<span class='red'>sda</span>] 83886080 512-byte logical blocks: (42.9 GB/40.0 GiB)",
+      "[    3.006826] sd 2:0:0:0: [<span class='red'>sda</span>] Write Protect is off",
+      "[    3.006827] sd 2:0:0:0: [<span class='red'>sda</span>] Mode Sense: 61 00 00 00",
+      "[    3.006865] sd 2:0:0:0: [<span class='red'>sda</span>] Cache data unavailable",
+      "[    3.006866] sd 2:0:0:0: [<span class='red'>sda</span>] Assuming drive cache: write through",
+      "[    3.009737]  <span class='red'>sda</span>: <span class='red'>sda</span>1 <span class='red'>sda</span>2 < <span class='red'>sda</span>5 >",
+      "[    3.018964] sd 2:0:0:0: [<span class='red'>sda</span>] Attached SCSI disk",
+      "[    3.157555] EXT4-fs (<span class='red'>sda</span>1): mounted filesystem with ordered data mode. Opts: (null)",
+      "[    3.615743] EXT4-fs (<span class='red'>sda</span>1): re-mounted. Opts: errors=remount-ro",
+      "[    5.020339] Adding 998396k swap on /dev/<span class='red'>sda</span>5.  Priority:-2 extents:1 across:998396k FS",
+      "$PS1"
+    ]
+  }
+]

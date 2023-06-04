@@ -1,0 +1,165 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  overflow-y: scroll;
+}
+
+a,
+a:visited {
+  /* color: blue; */
+  /* color: var(--bs-primary); */
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  margin: 0.25em 0.5em;
+}
+
+.nav h1 {
+  padding: 0;
+  margin-right: auto;
+  /* color: rgba(0,0,0,.1); */
+  opacity: 0.15;
+}
+
+.nav a {
+  margin: 0 0.5em;
+}
+
+.nav a.objectives {
+  font-weight: bold;
+}
+
+.container {
+  max-width: 768px;
+  margin: auto auto;
+}
+
+.terminal {
+  /* font-family: "Ubuntu", sans-serif; */
+  font-family: "Lucida Console", Courier, monospace;
+  /* background: rgba(56, 4, 40, 0.9); */
+  /* background: #380428; */
+  background: #3c2735;
+  color: #fff;
+}
+
+.toolbar {
+  background: linear-gradient(#504b45 0%, #3c3b37 100%);
+  display: flex;
+  align-items: center;
+  padding: 0 0.5em;
+}
+
+.toolbar button {
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(#f37458 0%, #de4c12 100%);
+  border: none;
+  border-radius: 100%;
+  margin: 6px 2px;
+}
+.toolbar button:last-of-type {
+  margin-right: 8px;
+}
+.toolbar button:not(:first-of-type) {
+  background: linear-gradient(#7d7871 0%, #595953 100%);
+  text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.2);
+  box-shadow: 0px 0px 1px 0px #41403a, 0px 1px 1px 0px #474642;
+}
+
+.prompt {
+  margin: 1em 0;
+}
+
+.choices {
+}
+
+.choice {
+  display: block;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding: 0.5em;
+}
+
+.choice input {
+  margin-right: 0.5em;
+}
+
+.reveal-true .choice.guess-true.accept-true {
+  /* background: #cfc; */
+  background: var(--bs-success);
+  color: var(--bs-success-bg-subtle);
+}
+
+.reveal-true .choice.guess-false.accept-true,
+.reveal-true .choice.guess-true.accept-false {
+  /* background: #fcc; */
+  background: var(--bs-danger);
+  color: var(--bs-danger-bg-subtle);
+}
+
+.buttons {
+  display: flex;
+  margin: 1em 0;
+}
+
+.buttons .btn {
+  margin-left: 0.5em;
+}
+
+.buttons .btn:first-of-type {
+  margin-left: auto;
+}
+
+.explain {
+  margin: 1em 0;
+}
+
+.typer {
+  padding: 0.5em;
+}
+
+.user {
+  color: #87d441;
+}
+.path,
+.directory,
+.d {
+  /* color: #6d85a9; */
+  color: #a4c9ff;
+}
+.access {
+  color: #ddd;
+}
+
+.timer {
+  margin-left: auto;
+}
+
+.red {
+  color: red;
+}
+
+.yellow {
+  color: yellow;
+}
+
+.cyan {
+  color: cyan;
+}
+
+@media (max-width: 600px) {
+  .nav h1 {
+    width: 100%;
+  }
+  .choice {
+    border-bottom: solid 1px silver;
+  }
+}
