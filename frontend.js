@@ -244,7 +244,7 @@ function Main() {
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/*",
     element: <Main />,
   },
 ]);
