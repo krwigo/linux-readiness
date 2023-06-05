@@ -45,6 +45,7 @@ function Typer({ data }) {
         PATH: "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
         HOME: "/home/myuser",
         USERNAME: "user",
+        GROUPNAME: "users",
         HOSTNAME: "debian",
         PROMPTSU: "$",
       }

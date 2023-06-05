@@ -28,6 +28,7 @@
   "scripts": {
     "lint": "prettier -w .",
     "build": "npm run lint && webpack build --config .webpack.config.js --mode production",
-    "serve": "webpack serve --config .webpack.config.js"
+    "serve": "webpack serve --config .webpack.config.js",
+    "stage": "read -p message: MSG && npm run build && git add . && git commit -m \"$MSG\""
   }
 }

@@ -117,11 +117,12 @@
       }
     ],
     "terminal": [
-      "$PS1 convert dragon_sm.gif -resize 64x64 resize_dragon.gif",
+      { "PWD": "/var/www" },
+      "$PS1 <span class='red'>convert</span> original.gif -resize 64x64 resized.gif",
       "$PS1 ls -l -h",
-      "total 24K",
-      "-rw-r--r-- 1 root root 6.0K Jan 10  2009 dragon_sm.gif",
-      "-rw-r--r-- 1 root root <span class='red'>3.5K</span> Jan 10  2009 <span class='red'>resize_dragon.gif</span> <span class=arrow>&larr;</span>",
+      "total 9.5K",
+      "-rw-r--r-- 1 $USERNAME $GROUPNAME 6.0K Jan 10  2009 original.gif",
+      "-rw-r--r-- 1 $USERNAME $GROUPNAME 3.5K Jan 10  2009 resized.gif <span class=arrow>&larr;</span>",
       "$PS1"
     ]
   }
