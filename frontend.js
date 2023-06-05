@@ -60,9 +60,18 @@ function Typer({ data }) {
     <>
       <div className="terminal">
         <div className="toolbar">
-          <button onClick={() => localStorage.setItem("speed", "-100")} />
-          <button onClick={() => localStorage.setItem("speed", "40")} />
-          <button onClick={() => localStorage.setItem("speed", "100")} />
+          <button
+            onClick={() => localStorage.setItem("speed", "-1000")}
+            alt="Fast"
+          />
+          <button
+            onClick={() => localStorage.setItem("speed", "0")}
+            alt="Normal"
+          />
+          <button
+            onClick={() => localStorage.setItem("speed", "80")}
+            alt="Slow"
+          />
         </div>
         <div className="typer">
           <span ref={el} />
@@ -72,7 +81,97 @@ function Typer({ data }) {
   );
 }
 
-function Card({ data, onNext }) {
+function CardText({ data, onNext }) {
+  const [time, setTime] = useState(90);
+
+  const [reveal, setReveal] = useState(false);
+
+  const [explain, setExplain] = useState(false);
+
+  const [guess, setGuess] = useState("");
+
+  useEffect(() => {
+    const id = setInterval(
+      () => setTime((prev) => Math.max(0, prev - 1)),
+      1000
+    );
+    return () => clearInterval(id);
+  }, [data]);
+
+  useEffect(() => {
+    setTime(90);
+    setReveal(false);
+    setExplain(false);
+    setGuess("");
+  }, [data]);
+
+  const cmp = data?.caseSensitive
+    ? (x) => data.accept.includes(x.trim())
+    : (x) =>
+        data.accept
+          .map((y) => y.toLowerCase())
+          .includes(x.trim().toLowerCase());
+
+  return (
+    <div className="container cardtext">
+      <div className="prompt">{data.promptText || data.prompt}</div>
+      <div className={`reveal-${reveal}`}>
+        <label className={`choice guess-${!!guess} accept-${cmp(guess)}`}>
+          <input
+            type="text"
+            value={guess}
+            onChange={(e) => setGuess(e.target.value)}
+          />
+          {reveal && <div>{data.accept.join(", ")}</div>}
+        </label>
+      </div>
+      <div className="buttons">
+        {reveal && (
+          <Button variant="primary" onClick={onNext}>
+            Next
+          </Button>
+        )}
+        <Button
+          variant={time >= 20 ? "primary" : time > 0 ? "warning" : "danger"}
+          onClick={() => {
+            setTime(0);
+            setExplain(true);
+            setReveal((prev) => !prev);
+          }}
+        >
+          Reveal ({time})
+        </Button>
+        <Button
+          variant="secondary"
+          onClick={() => {
+            setExplain((prev) => !prev);
+          }}
+        >
+          Explain
+        </Button>
+      </div>
+      {explain && (
+        <div className="explain">
+          <p dangerouslySetInnerHTML={{ __html: data.explain }}></p>
+          {data.links?.length && (
+            <ul>
+              {data.links.map((x, i) => (
+                <li key={i}>
+                  <a target="_blank" href={x?.href}>
+                    {x?.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
+          <Typer data={data} />
+        </div>
+      )}
+    </div>
+  );
+}
+
+function CardCheck({ data, onNext }) {
   const [time, setTime] = useState(90);
 
   const [reveal, setReveal] = useState(false);
@@ -96,13 +195,18 @@ function Card({ data, onNext }) {
     setReveal(false);
     setExplain(false);
     setGuesses([]);
-    setChoices(data.accept.concat(data.reject).sort(randomSort));
+    setChoices(
+      data.accept
+        .concat(data.reject.sort(randomSort))
+        .slice(0, 5)
+        .sort(randomSort)
+    );
   }, [data]);
 
   return (
-    <div className="container">
-      <div className="prompt">{data.prompt}</div>
-      <div className={`choices reveal-${reveal}`}>
+    <div className="container cardcheck">
+      <div className="prompt">{data.promptCheck || data.prompt}</div>
+      <div className={`reveal-${reveal}`}>
         {choices.map((x, i) => (
           <label
             key={i}
@@ -126,31 +230,135 @@ function Card({ data, onNext }) {
             {x}
           </label>
         ))}
-        <div className="buttons">
-          {reveal && (
-            <Button variant="primary" onClick={onNext}>
-              Next
-            </Button>
+      </div>
+      <div className="buttons">
+        {reveal && (
+          <Button variant="primary" onClick={onNext}>
+            Next
+          </Button>
+        )}
+        <Button
+          variant={time >= 20 ? "primary" : time > 0 ? "warning" : "danger"}
+          onClick={() => {
+            setTime(0);
+            setExplain(true);
+            setReveal((prev) => !prev);
+          }}
+        >
+          Reveal ({time})
+        </Button>
+        <Button
+          variant="secondary"
+          onClick={() => {
+            setExplain((prev) => !prev);
+          }}
+        >
+          Explain
+        </Button>
+      </div>
+      {explain && (
+        <div className="explain">
+          <p dangerouslySetInnerHTML={{ __html: data.explain }}></p>
+          {data.links?.length && (
+            <ul>
+              {data.links.map((x, i) => (
+                <li key={i}>
+                  <a target="_blank" href={x?.href}>
+                    {x?.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
           )}
-          <Button
-            variant={time >= 20 ? "primary" : time > 0 ? "warning" : "danger"}
-            onClick={() => {
-              setTime(0);
-              setExplain(true);
-              setReveal((prev) => !prev);
-            }}
-          >
-            Reveal ({time})
-          </Button>
-          <Button
-            variant="secondary"
-            onClick={() => {
-              setExplain((prev) => !prev);
-            }}
-          >
-            Explain
-          </Button>
+          <Typer data={data} />
         </div>
+      )}
+    </div>
+  );
+}
+
+function CardRadio({ data, onNext }) {
+  const [time, setTime] = useState(90);
+
+  const [reveal, setReveal] = useState(false);
+
+  const [explain, setExplain] = useState(false);
+
+  const [guess, setGuess] = useState("");
+
+  const [choices, setChoices] = useState([]);
+
+  useEffect(() => {
+    const id = setInterval(
+      () => setTime((prev) => Math.max(0, prev - 1)),
+      1000
+    );
+    return () => clearInterval(id);
+  }, [data]);
+
+  useEffect(() => {
+    setTime(90);
+    setReveal(false);
+    setExplain(false);
+    setGuess("");
+    setChoices(
+      data.accept
+        .sort(randomSort)
+        .slice(0, 1)
+        .concat(data.reject.sort(randomSort))
+        .slice(0, 5)
+        .sort(randomSort)
+    );
+  }, [data]);
+
+  return (
+    <div className="container cardcheck">
+      <div className="prompt">{data.promptCheck || data.prompt}</div>
+      <div className={`reveal-${reveal}`}>
+        {choices.map((x, i) => (
+          <label
+            key={i}
+            className={`choice guess-${
+              guess == x
+            } accept-${data.accept.includes(x)}`}
+            htmlFor={`choice${i}`}
+          >
+            <input
+              type="radio"
+              name="radio"
+              id={`choice${i}`}
+              value={x}
+              checked={guess == x}
+              onChange={(e) => setGuess(x)}
+            />{" "}
+            {x}
+          </label>
+        ))}
+      </div>
+      <div className="buttons">
+        {reveal && (
+          <Button variant="primary" onClick={onNext}>
+            Next
+          </Button>
+        )}
+        <Button
+          variant={time >= 20 ? "primary" : time > 0 ? "warning" : "danger"}
+          onClick={() => {
+            setTime(0);
+            setExplain(true);
+            setReveal((prev) => !prev);
+          }}
+        >
+          Reveal ({time})
+        </Button>
+        <Button
+          variant="secondary"
+          onClick={() => {
+            setExplain((prev) => !prev);
+          }}
+        >
+          Explain
+        </Button>
       </div>
       {explain && (
         <div className="explain">
@@ -180,11 +388,17 @@ function Main() {
 
   const [index, setIndex] = useState(0);
 
-  const onNext = useCallback((ev) =>
-    setIndex((prev) => (prev + 1) % dataset.length)
-  );
+  const onNext = useCallback((ev) => setIndex((prev) => prev + 1));
 
   const onClick = useCallback((ev) => setValue((prev) => prev + 1));
+
+  const [styles, setStyles] = useState(() =>
+    []
+      .concat(Array(2).fill("cardtext"))
+      .concat(Array(8).fill("cardcheck"))
+      .concat(Array(30).fill("cardradio"))
+      .sort(randomSort)
+  );
 
   const [theme, setTheme] = useState(() => {
     let value = localStorage.getItem("theme");
@@ -238,9 +452,18 @@ function Main() {
           Theme: {theme}
         </a>
       </div>
-      {dataset.slice(index, index + 1).map((data, i) => (
-        <Card key={i} data={data} onNext={onNext} />
-      ))}
+      {styles[index % styles.length] == "cardtext" &&
+        dataset
+          .slice(index % dataset.length, (index % dataset.length) + 1)
+          .map((data, i) => <CardText key={i} data={data} onNext={onNext} />)}
+      {styles[index % styles.length] == "cardcheck" &&
+        dataset
+          .slice(index % dataset.length, (index % dataset.length) + 1)
+          .map((data, i) => <CardCheck key={i} data={data} onNext={onNext} />)}
+      {styles[index % styles.length] == "cardradio" &&
+        dataset
+          .slice(index % dataset.length, (index % dataset.length) + 1)
+          .map((data, i) => <CardRadio key={i} data={data} onNext={onNext} />)}
     </div>
   );
 }

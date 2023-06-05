@@ -109,9 +109,6 @@ html {
   margin: 1em 0;
 }
 
-.choices {
-}
-
 .choice {
   display: block;
   -webkit-user-select: none;
@@ -122,6 +119,10 @@ html {
 
 .choice input {
   margin-right: 0.5em;
+}
+
+.cardtext input[type="text"] {
+  width: 100%;
 }
 
 /* feedback: always show rejected */
