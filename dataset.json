@@ -4,7 +4,6 @@
     "accept": ["R", "recursive"],
     "reject": ["re", "Rec", "rr", "r"],
     "caseSensitive": true,
-    "styleRequire": "cardtext",
     "explain": "The ls command lists directory contents. The lowercase <strong>-r</strong> or <strong>--reverse</strong> option reverses the list order. The uppercase <strong>-R</strong> or <strong>--recursive</strong> option lists subdirectories recursively. While most commands support a recursive option (-R), the cp (copy) command aliases both cases together for convenience.",
     "links": [
       {
@@ -65,6 +64,7 @@
       "Entries persist after rebooting the system",
       "Only the ring user may access buffer entries"
     ],
+    "styleIgnore": ["cardtext"],
     "explain": "The Linux kernel initializes the <strong>kernel ring buffer</strong> as a logging mechanism. Kernel modules, compiled or inserted, may verbosely add to the buffer. It's a limited size buffer because the early boot stage doesn't have access to disk storage yet. The memory allocated for the kernel ring buffer cannot be simultaneously used by programs.",
     "links": [
       {
