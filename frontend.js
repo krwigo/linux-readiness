@@ -81,7 +81,7 @@ function Typer({ data }) {
   );
 }
 
-function CardText({ data, onNext }) {
+function CardText({ data, config, onNext }) {
   const [time, setTime] = useState(90);
 
   const [reveal, setReveal] = useState(false);
@@ -96,14 +96,14 @@ function CardText({ data, onNext }) {
       1000
     );
     return () => clearInterval(id);
-  }, [data]);
+  }, [config.dataindex]);
 
   useEffect(() => {
     setTime(90);
     setReveal(false);
     setExplain(false);
     setGuess("");
-  }, [data]);
+  }, [config.dataindex]);
 
   const cmp = data?.caseSensitive
     ? (x) => data.accept.includes(x.trim())
@@ -131,16 +131,18 @@ function CardText({ data, onNext }) {
             Next
           </Button>
         )}
-        <Button
-          variant={time >= 20 ? "primary" : time > 0 ? "warning" : "danger"}
-          onClick={() => {
-            setTime(0);
-            setExplain(true);
-            setReveal((prev) => !prev);
-          }}
-        >
-          Reveal ({time})
-        </Button>
+        {!reveal && (
+          <Button
+            variant={time >= 20 ? "primary" : time > 0 ? "warning" : "danger"}
+            onClick={() => {
+              setTime(0);
+              setExplain(true);
+              setReveal((prev) => !prev);
+            }}
+          >
+            Reveal ({time})
+          </Button>
+        )}
         <Button
           variant="secondary"
           onClick={() => {
@@ -171,7 +173,7 @@ function CardText({ data, onNext }) {
   );
 }
 
-function CardCheck({ data, onNext }) {
+function CardCheck({ data, config, onNext }) {
   const [time, setTime] = useState(90);
 
   const [reveal, setReveal] = useState(false);
@@ -188,7 +190,7 @@ function CardCheck({ data, onNext }) {
       1000
     );
     return () => clearInterval(id);
-  }, [data]);
+  }, [config.dataindex]);
 
   useEffect(() => {
     setTime(90);
@@ -201,7 +203,7 @@ function CardCheck({ data, onNext }) {
         .slice(0, 5)
         .sort(randomSort)
     );
-  }, [data]);
+  }, [config.dataindex]);
 
   return (
     <div className="container cardcheck">
@@ -237,16 +239,18 @@ function CardCheck({ data, onNext }) {
             Next
           </Button>
         )}
-        <Button
-          variant={time >= 20 ? "primary" : time > 0 ? "warning" : "danger"}
-          onClick={() => {
-            setTime(0);
-            setExplain(true);
-            setReveal((prev) => !prev);
-          }}
-        >
-          Reveal ({time})
-        </Button>
+        {!reveal && (
+          <Button
+            variant={time >= 20 ? "primary" : time > 0 ? "warning" : "danger"}
+            onClick={() => {
+              setTime(0);
+              setExplain(true);
+              setReveal((prev) => !prev);
+            }}
+          >
+            Reveal ({time})
+          </Button>
+        )}
         <Button
           variant="secondary"
           onClick={() => {
@@ -277,7 +281,7 @@ function CardCheck({ data, onNext }) {
   );
 }
 
-function CardRadio({ data, onNext }) {
+function CardRadio({ data, config, onNext }) {
   const [time, setTime] = useState(90);
 
   const [reveal, setReveal] = useState(false);
@@ -294,7 +298,7 @@ function CardRadio({ data, onNext }) {
       1000
     );
     return () => clearInterval(id);
-  }, [data]);
+  }, [config.dataindex]);
 
   useEffect(() => {
     setTime(90);
@@ -309,7 +313,7 @@ function CardRadio({ data, onNext }) {
         .slice(0, 5)
         .sort(randomSort)
     );
-  }, [data]);
+  }, [config.dataindex]);
 
   return (
     <div className="container cardcheck">
@@ -341,16 +345,18 @@ function CardRadio({ data, onNext }) {
             Next
           </Button>
         )}
-        <Button
-          variant={time >= 20 ? "primary" : time > 0 ? "warning" : "danger"}
-          onClick={() => {
-            setTime(0);
-            setExplain(true);
-            setReveal((prev) => !prev);
-          }}
-        >
-          Reveal ({time})
-        </Button>
+        {!reveal && (
+          <Button
+            variant={time >= 20 ? "primary" : time > 0 ? "warning" : "danger"}
+            onClick={() => {
+              setTime(0);
+              setExplain(true);
+              setReveal((prev) => !prev);
+            }}
+          >
+            Reveal ({time})
+          </Button>
+        )}
         <Button
           variant="secondary"
           onClick={() => {
@@ -384,21 +390,48 @@ function CardRadio({ data, onNext }) {
 const themes = ["auto", "light", "dark"];
 
 function Main() {
-  const [value, setValue] = useState(1);
+  const [config, setConfig] = useState({
+    dataindex: 0,
+    styleindex: 0,
+    styles: ["cardtext"],
+  });
 
-  const [index, setIndex] = useState(0);
-
-  const onNext = useCallback((ev) => setIndex((prev) => prev + 1));
-
-  const onClick = useCallback((ev) => setValue((prev) => prev + 1));
-
-  const [styles, setStyles] = useState(() =>
-    []
-      .concat(Array(2).fill("cardtext"))
-      .concat(Array(8).fill("cardcheck"))
-      .concat(Array(30).fill("cardradio"))
-      .sort(randomSort)
+  const onNext = useCallback(() =>
+    setConfig((prev) => {
+      let next = Object.assign({}, prev);
+      next.dataindex += 1;
+      next.data = dataset[next.dataindex % dataset.length];
+      next.styleindex += 1;
+      next.style = next.styles[next.styleindex % next.styles.length];
+      for (let i = 0; i < dataset.length; i++) {
+        if (
+          (next.data?.styleRequire?.includes &&
+            !next.data.styleRequire.includes(next.style)) ||
+          (next.data?.styleIgnore?.includes &&
+            next.data.styleIgnore.includes(next.style))
+        ) {
+          next.dataindex += 1;
+          next.data = dataset[next.dataindex % dataset.length];
+          continue;
+        }
+        break;
+      }
+      return next;
+    })
   );
+
+  useEffect(() => {
+    setConfig({
+      dataindex: -1,
+      styleindex: -1,
+      styles: []
+        .concat(Array(2).fill("cardtext"))
+        .concat(Array(8).fill("cardcheck"))
+        .concat(Array(30).fill("cardradio"))
+        .sort(randomSort),
+    });
+    onNext();
+  }, []);
 
   const [theme, setTheme] = useState(() => {
     let value = localStorage.getItem("theme");
@@ -452,18 +485,15 @@ function Main() {
           Theme: {theme}
         </a>
       </div>
-      {styles[index % styles.length] == "cardtext" &&
-        dataset
-          .slice(index % dataset.length, (index % dataset.length) + 1)
-          .map((data, i) => <CardText key={i} data={data} onNext={onNext} />)}
-      {styles[index % styles.length] == "cardcheck" &&
-        dataset
-          .slice(index % dataset.length, (index % dataset.length) + 1)
-          .map((data, i) => <CardCheck key={i} data={data} onNext={onNext} />)}
-      {styles[index % styles.length] == "cardradio" &&
-        dataset
-          .slice(index % dataset.length, (index % dataset.length) + 1)
-          .map((data, i) => <CardRadio key={i} data={data} onNext={onNext} />)}
+      {config.style == "cardtext" && (
+        <CardText data={config.data} config={config} onNext={onNext} />
+      )}
+      {config.style == "cardcheck" && (
+        <CardCheck data={config.data} config={config} onNext={onNext} />
+      )}
+      {config.style == "cardradio" && (
+        <CardRadio data={config.data} config={config} onNext={onNext} />
+      )}
     </div>
   );
 }

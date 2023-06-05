@@ -4,6 +4,7 @@
     "accept": ["R", "recursive"],
     "reject": ["re", "Rec", "rr", "r"],
     "caseSensitive": true,
+    "styleRequire": "cardtext",
     "explain": "The ls command lists directory contents. The lowercase <strong>-r</strong> or <strong>--reverse</strong> option reverses the list order. The uppercase <strong>-R</strong> or <strong>--recursive</strong> option lists subdirectories recursively. While most commands support a recursive option (-R), the cp (copy) command aliases both cases together for convenience.",
     "links": [
       {
