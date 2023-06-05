@@ -184,6 +184,15 @@ function CardCheck({ data, config, onNext }) {
 
   const [choices, setChoices] = useState([]);
 
+  const textMap = {
+    0: "ZERO",
+    1: "ONE",
+    2: "TWO",
+    3: "THREE",
+    4: "FOUR",
+    5: "FIVE",
+  };
+
   useEffect(() => {
     const id = setInterval(
       () => setTime((prev) => Math.max(0, prev - 1)),
@@ -207,7 +216,9 @@ function CardCheck({ data, config, onNext }) {
 
   return (
     <div className="container cardcheck">
-      <div className="prompt">{data.promptCheck || data.prompt}</div>
+      <div className="prompt">
+        {data.promptCheck || data.prompt} (Choose {textMap[data.accept.length]})
+      </div>
       <div className={`reveal-${reveal}`}>
         {choices.map((x, i) => (
           <label
