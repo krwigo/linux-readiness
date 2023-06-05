@@ -62,15 +62,15 @@ function Typer({ data }) {
         <div className="toolbar">
           <button
             onClick={() => localStorage.setItem("speed", "-1000")}
-            alt="Fast"
+            title="Fast"
           />
           <button
             onClick={() => localStorage.setItem("speed", "0")}
-            alt="Normal"
+            title="Normal"
           />
           <button
             onClick={() => localStorage.setItem("speed", "80")}
-            alt="Slow"
+            title="Slow"
           />
         </div>
         <div className="typer">
