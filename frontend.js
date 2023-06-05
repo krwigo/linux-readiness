@@ -327,7 +327,7 @@ function CardRadio({ data, config, onNext }) {
   }, [config.dataindex]);
 
   return (
-    <div className="container cardcheck">
+    <div className="container cardradio">
       <div className="prompt">{data.promptCheck || data.prompt}</div>
       <div className={`reveal-${reveal}`}>
         {choices.map((x, i) => (

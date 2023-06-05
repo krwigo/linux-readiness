@@ -196,7 +196,8 @@ html {
   .nav h1 {
     width: 100%;
   }
-  .choice {
+  .cardcheck .choice,
+  .cardradio .choice {
     border-bottom: solid 1px silver;
   }
 }
