@@ -133,6 +133,7 @@ html {
 }
 
 /* feedback: always show accepted */
+.cardtext .reveal-true .choice.guess-false,
 .reveal-true .choice.guess-false.accept-true,
 .reveal-true .choice.guess-true.accept-true {
   background: var(--bs-success);
