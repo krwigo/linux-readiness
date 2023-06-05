@@ -416,6 +416,8 @@ function Main() {
       next.style = next.styles[next.styleindex % next.styles.length];
       for (let i = 0; i < dataset.length; i++) {
         if (
+          // suggestion: skip cardcheck if next.data.accept.length <= 1
+          // (next.style == "cardcheck" && next.data?.accept?.length <= 0) ||
           (next.data?.styleRequire?.includes &&
             !next.data.styleRequire.includes(next.style)) ||
           (next.data?.styleIgnore?.includes &&

@@ -4,7 +4,7 @@
     "accept": ["R", "recursive"],
     "reject": ["re", "Rec", "rr", "r"],
     "caseSensitive": true,
-    "explain": "The ls command lists directory contents. The lowercase <strong>-r</strong> or <strong>--reverse</strong> option reverses the list order. The uppercase <strong>-R</strong> or <strong>--recursive</strong> option lists subdirectories recursively. While most commands support a recursive option (-R), the cp (copy) command aliases both cases together for convenience.",
+    "explain": "The ls command lists directory contents. The lowercase <strong>-r</strong> or <strong>--reverse</strong> option reverses the display order. The uppercase <strong>-R</strong> or <strong>--recursive</strong> option displays subdirectories recursively. While most commands support a recursive option (-R), the cp (copy) command aliases both cases together for convenience.",
     "links": [
       {
         "title": "Learning Materials - Topic 2",
@@ -37,7 +37,7 @@
       "<span class=d>Desktop</span> <span class=d>Documents</span> <span class=d>Pictures</span>",
       "$PS1 ls -r",
       "<span class=d>Pictures</span> <span class=d>Documents</span> <span class=d>Desktop</span>",
-      "$PS1 ls -R",
+      "$PS1 ls -R <span class=arrow>&larr;</span>",
       ".:",
       "<span class=d>Desktop</span> <span class=d>Documents</span> <span class=d>Pictures</span>",
       "",
@@ -62,10 +62,10 @@
       "It transports data packets across Local Area Networks",
       "The grep command is used to access buffer entries",
       "Entries persist after rebooting the system",
-      "Only the ring user may access buffer entries"
+      "Only the ring command may access buffer entries"
     ],
     "styleIgnore": ["cardtext"],
-    "explain": "The Linux kernel initializes the <strong>kernel ring buffer</strong> as a logging mechanism. Kernel modules, compiled or inserted, may verbosely add to the buffer. It's a limited size buffer because the early boot stage doesn't have access to disk storage yet. The memory allocated for the kernel ring buffer cannot be simultaneously used by programs.",
+    "explain": "The Linux kernel initializes the <strong>kernel ring buffer</strong> as an early logging mechanism. Kernel modules, compiled or inserted, may verbosely add to the buffer. It is a limited size buffer because the early boot stage doesn't have access to disk storage yet. The memory allocated for the kernel ring buffer cannot be simultaneously used by programs.",
     "links": [
       {
         "title": "Learning Materials - Topic 4.3",
@@ -98,6 +98,30 @@
       "[    3.157555] EXT4-fs (<span class='red'>sda</span>1): mounted filesystem with ordered data mode. Opts: (null)",
       "[    3.615743] EXT4-fs (<span class='red'>sda</span>1): re-mounted. Opts: errors=remount-ro",
       "[    5.020339] Adding 998396k swap on /dev/<span class='red'>sda</span>5.  Priority:-2 extents:1 across:998396k FS",
+      "$PS1"
+    ]
+  },
+  {
+    "prompt": "Which application(s) are frequently executed by web servers?",
+    "accept": ["ImageMagick"],
+    "reject": ["GIMP", "Blender", "/etc/passwd", "Ubuntu"],
+    "explain": "Websites with server side components frequently use <strong>ImageMagick</strong> to resize and crop pictures. For example, a forum may create avatars or thumbnails in smaller resolutions to reduce storage and transfer sizes. GIMP and Blender are multimedia applications for raster image editing and video rendering. The /etc/passwd file contains a list of user accounts. Ubuntu is a distribution based on Debian.",
+    "links": [
+      {
+        "title": "Learning Materials - Topic 1.2",
+        "href": "https://learning.lpi.org/en/learning-materials/010-160/1/1.2/1.2_01/"
+      },
+      {
+        "title": "ImageMagick - Create, Edit, Compose, or Convert Digital Images",
+        "href": "https://imagemagick.org"
+      }
+    ],
+    "terminal": [
+      "$PS1 convert dragon_sm.gif -resize 64x64 resize_dragon.gif",
+      "$PS1 ls -l -h",
+      "total 24K",
+      "-rw-r--r-- 1 root root 6.0K Jan 10  2009 dragon_sm.gif",
+      "-rw-r--r-- 1 root root <span class='red'>3.5K</span> Jan 10  2009 <span class='red'>resize_dragon.gif</span> <span class=arrow>&larr;</span>",
       "$PS1"
     ]
   }
