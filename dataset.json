@@ -4,7 +4,7 @@
     "accept": ["R", "recursive"],
     "reject": ["re", "Rec", "rr", "r"],
     "caseSensitive": true,
-    "explain": "The ls command lists directory contents. The lowercase <strong>-r</strong> or <strong>--reverse</strong> option reverses the display order. The uppercase <strong>-R</strong> or <strong>--recursive</strong> option displays subdirectories recursively. While most commands support a recursive option (-R), the cp (copy) command aliases both cases together for convenience.",
+    "explain": "The ls command lists directory contents. The lowercase <strong>-r</strong>/--reverse option reverses the display order. The uppercase <strong>-R</strong>/--recursive option displays subdirectories recursively. While most commands support a recursive option (-R), the cp (copy) command aliases both cases together for convenience.",
     "links": [
       {
         "title": "Learning Materials - Topic 2",
@@ -131,7 +131,7 @@
     "accept": ["j"],
     "reject": ["c", "x", "z", "f", "J"],
     "caseSensitive": true,
-    "explain": "The tar \"tape archive\" program supports mutliple compression algorithms including gzip, bzip2, and xz. Specifying the <strong>-j</strong> [or --bzip2] option outputs a bzip2 compressed archive during <strong>-c</strong> [or --create] mode or inputs a bzip2 compressed archive during <strong>-x</strong> [or --extract] extraction. Other algorithsm include <strong>-z</strong> for gzip; and <strong>-J</strong> for xz compression. The <strong>-v</strong> option increases verbosity.",
+    "explain": "The tar \"tape archive\" program supports mutliple compression algorithms including gzip, bzip2, and xz. Specifying the <strong>-j</strong>/--bzip2 option outputs a bzip2 compressed archive during <strong>-c</strong>/--create mode or inputs a bzip2 compressed archive during <strong>-x</strong>/--extract mode. Related options include <strong>-z</strong> for gzip; and <strong>-J</strong> for xz compression. The <strong>-v</strong> option increases verbosity.",
     "links": [
       {
         "title": "Learning Materials - Topic 3.1",
@@ -194,7 +194,7 @@
       { "PWD": "/etc" },
       "$PS1 sudo <span class='yellow'>-u root</span> useradd -m student",
       "$PS1 tail -n 1 /etc/passwd",
-      "$USERNAME:x:<span class='red'>1000</span>:1000:user:/home/user:/bin/bash <span class=arrow>&larr;</span>",
+      "student:x:<span class='red'>1000</span>:1000:student:/home/student:/bin/bash <span class=arrow>&larr;</span>",
       "$PS1"
     ]
   }

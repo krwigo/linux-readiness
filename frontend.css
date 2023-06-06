@@ -240,3 +240,32 @@ html {
     border-bottom: solid 1px #c0c0c0;
   }
 }
+
+.larrow {
+  position: relative;
+}
+.larrow:after {
+  content: "↙";
+  animation: 1s larrow infinite linear;
+  font-size: 5em;
+  color: red;
+  line-height: 1px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@keyframes larrow {
+  0% {
+    top: 0px;
+    left: 0px;
+  }
+  50% {
+    top: -50px;
+    left: 50px;
+  }
+  100% {
+    top: 0px;
+    left: 0px;
+  }
+}
