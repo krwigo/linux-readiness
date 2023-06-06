@@ -216,6 +216,16 @@ html {
   padding: 0 0.2em;
 }
 
+.option {
+  font-family: "Lucida Console", Courier, monospace;
+  /* background: var(--bs-tertiary-bg); */
+  background: var(--bs-primary-bg-subtle);
+  border-color: var(--bs-border-color);
+  border-style: solid;
+  border-width: thin;
+  padding: 0 0.2em;
+}
+
 @keyframes arrow {
   0% {
     margin-left: 0em;

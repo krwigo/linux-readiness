@@ -4,7 +4,7 @@
     "accept": ["R", "recursive"],
     "reject": ["re", "Rec", "rr", "r"],
     "caseSensitive": true,
-    "explain": "The ls command lists directory contents. The lowercase <strong>-r</strong>/--reverse option reverses the display order. The uppercase <strong>-R</strong>/--recursive option displays subdirectories recursively. While most commands support a recursive option (-R), the cp (copy) command aliases both cases together for convenience.",
+    "explain": "The ls command lists directory contents. The lowercase <span class=option>-r</span> <span class=option>--reverse</span> option reverses the display order. The uppercase <span class=option>-R</span> <span class=option>--recursive</span> option displays subdirectories recursively. While most commands support a recursive option <span class=option>-R</span>, the cp (file copy) command aliases both for convenience.",
     "links": [
       {
         "title": "Learning Materials - Topic 2",
@@ -131,7 +131,7 @@
     "accept": ["j"],
     "reject": ["c", "x", "z", "f", "J"],
     "caseSensitive": true,
-    "explain": "The tar \"tape archive\" program supports mutliple compression algorithms including gzip, bzip2, and xz. Specifying the <strong>-j</strong>/--bzip2 option outputs a bzip2 compressed archive during <strong>-c</strong>/--create mode or inputs a bzip2 compressed archive during <strong>-x</strong>/--extract mode. Related options include <strong>-z</strong> for gzip; and <strong>-J</strong> for xz compression. The <strong>-v</strong> option increases verbosity.",
+    "explain": "The tar \"tape archive\" program supports mutliple compression algorithms including gzip, bzip2, and xz. Specifying the <span class=option>-j</span> <span class=option>--bzip2</span> option outputs a bzip2 compressed archive during <span class=option>-c</span> <span class=option>--create</span> mode or inputs a bzip2 compressed archive during <span class=option>-x</span> <span class=option>--extract</span> mode. Related options include <span class=option>-z</span> <span class=option>--gzip</span> for gzip compression; <span class=option>-J</span> <span class=option>-xz</span> for xz compression; <span class=option>-v</span> <span class=option>--verbose</span> for increased verbosity; and <span class=option>-f &lt;name&gt;</span> <span class=option>--file &lt;name&gt;</span> to specify the archive file in context.",
     "links": [
       {
         "title": "Learning Materials - Topic 3.1",
@@ -163,7 +163,7 @@
     "prompt": "Which field corresponds to the UID of the /etc/passwd file?",
     "accept": ["3"],
     "reject": ["1", "7", "4", "2", "6"],
-    "explain": "The /etc/passwd file specifies attributes for each user account in the system. Each field is separated by a colon \";\" character. The format follows the USERNAME:PASSWORD:<strong>UID</strong>:GID:GECOS:HOMEDIR:SHELL specification. A user's home directory can be accessed through the $HOME variable managed by the /etc/passwd file.",
+    "explain": "The /etc/passwd file specifies attributes for each user account in the system. Each field is separated by a colon \":\" character. The format follows the <code>USERNAME:PASSWORD:<strong>UID</strong>:GID:GECOS:HOMEDIR:SHELL</code> specification. Environment variables expose the current user's home directory path via the HOME variable.",
     "links": [
       {
         "title": "Learning Materials - Topic 5.1",
