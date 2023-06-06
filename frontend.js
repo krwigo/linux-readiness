@@ -21,7 +21,7 @@ const recurseEnv = (env, src, name) =>
     recurseEnv(env, env[name] || "")
   );
 
-const randomSort = (a, b) => (Math.random() < 0.5 ? 1 : -1);
+const randomSort = (a, b) => Math.random() - 0.5;
 
 function Typer({ data }) {
   const el = useRef(null);
