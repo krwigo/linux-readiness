@@ -6,7 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Typed from "typed.js";
 
 // ref: https://react-bootstrap.github.io/components/buttons/
-import { Button } from "react-bootstrap";
+import { Button, Offcanvas } from "react-bootstrap";
 
 // ref: https://icons.getbootstrap.com/
 // import { Trash, ToggleOn, ToggleOff } from "react-bootstrap-icons";
@@ -22,6 +22,25 @@ const recurseEnv = (env, src, name) =>
   );
 
 const randomSort = (a, b) => Math.random() - 0.5;
+
+function Panel({ showPanel, setPanel, config }) {
+  return (
+    <Offcanvas show={showPanel} onHide={() => setPanel(false)}>
+      <Offcanvas.Header closeButton>
+        <Offcanvas.Title>Panel</Offcanvas.Title>
+      </Offcanvas.Header>
+      <Offcanvas.Body>
+        <ol start="1">
+          {config.styles.map((style, i) => (
+            <li key={i} className={i == config.styleindex ? "active" : ""}>
+              {style}
+            </li>
+          ))}
+        </ol>
+      </Offcanvas.Body>
+    </Offcanvas>
+  );
+}
 
 function Typer({ data }) {
   const el = useRef(null);
@@ -324,6 +343,8 @@ function CardRadio({ data, config, onNext }) {
         .concat(data.reject.sort(randomSort))
         .slice(0, 5)
         .sort(randomSort)
+        .sort(randomSort)
+        .sort(randomSort)
     );
   }, [config.dataindex]);
 
@@ -402,6 +423,8 @@ function CardRadio({ data, config, onNext }) {
 const themes = ["auto", "light", "dark"];
 
 function Main() {
+  const [showPanel, setPanel] = useState(false);
+
   const [config, setConfig] = useState({
     dataindex: 0,
     styleindex: 0,
@@ -442,6 +465,8 @@ function Main() {
         .concat(Array(2).fill("cardtext"))
         .concat(Array(8).fill("cardcheck"))
         .concat(Array(30).fill("cardradio"))
+        .sort(randomSort)
+        .sort(randomSort)
         .sort(randomSort),
     });
     onNext();
@@ -473,7 +498,9 @@ function Main() {
   return (
     <div>
       <div className="nav">
-        <h1>Linux</h1>
+        <h1 onClick={() => setPanel(true)}>
+          Linux<sub>{dataset.length}</sub>
+        </h1>
         <a
           href="https://www.lpi.org/our-certifications/linux-essentials-overview"
           className="overview"
@@ -508,6 +535,7 @@ function Main() {
       {config.style == "cardradio" && (
         <CardRadio data={config.data} config={config} onNext={onNext} />
       )}
+      <Panel showPanel={showPanel} setPanel={setPanel} config={config} />
     </div>
   );
 }

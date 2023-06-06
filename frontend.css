@@ -18,6 +18,13 @@ html {
   padding: 0;
   margin-right: auto;
   opacity: 0.15;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.nav h1 sub {
+  font-size: 0.5em;
 }
 
 .nav a {
@@ -65,6 +72,11 @@ html {
   100% {
     opacity: 0;
   }
+}
+
+.offcanvas .active {
+  font-weight: bold;
+  color: var(--bs-primary);
 }
 
 .container {
