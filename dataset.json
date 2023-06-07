@@ -273,5 +273,52 @@
       "1 <span class=arrow>&larr;</span>",
       "$PS1"
     ]
+  },
+  {
+    "prompt": "Which database management system could be found in a Linux system?",
+    "accept": ["MySQL", "MariaDB", "PostgreSQL"],
+    "reject": ["NGINX", "GNOME", "KDE", "GIMP", "Audacity"],
+    "explain": "MySQL was released in 1995 as a relational database system. MariaDB forked from MySQL in 2010 due to licensing issues. PostgreSQL is another open-source database system with advanced workloads and cross-platform support.",
+    "links": [
+      {
+        "title": "Learning Materials - Topic 1.2 Lesson 1",
+        "href": "https://learning.lpi.org/en/learning-materials/010-160/1/1.2/1.2_01/"
+      },
+      {
+        "title": "MySQL",
+        "href": "https://www.mysql.com/"
+      },
+      {
+        "title": "MariaDB",
+        "href": "https://mariadb.org/"
+      },
+      {
+        "title": "PostgreSQL",
+        "href": "https://www.postgresql.org/"
+      }
+    ],
+    "terminal": [
+      "$PS1 dpkg --list | grep <span class='red'>mariadb</span>",
+      "ii <span class='red'>mariadb</span>-client-10.3      1:10.3.18-0+deb10u1 amd64 MariaDB database client",
+      "ii <span class='red'>mariadb</span>-client-core-10.3 1:10.3.18-0+deb10u1 amd64 MariaDB database core",
+      "ii <span class='red'>mariadb</span>-server-10.3      1:10.3.18-0+deb10u1 amd64 MariaDB database server",
+      "ii <span class='red'>mariadb</span>-server-core-10.3 1:10.3.18-0+deb10u1 amd64 MariaDB database core",
+      "$PS1 mariadb",
+      "Welcome to the MariaDB monitor. Commands end with ; or \\g.",
+      "Your MariaDB connection id is 8360",
+      "Server version: 10.3.18-MariaDB-0+deb10u1 Debian 10",
+      "Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.",
+      "Type 'help;' or '\\h' for help. Type '\\c' to clear the current input statement.",
+      "MariaDB [(none)]> <span class='yellow'>SELECT NOW();</span>",
+      "+---------------------+",
+      "| NOW() &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |",
+      "+---------------------+",
+      "| 1999-06-07 13:46:38 |",
+      "+---------------------+",
+      "1 row in set (0.001 sec)",
+      "MariaDB [(none)]> exit",
+      "Bye",
+      "$PS1"
+    ]
   }
 ]
