@@ -120,7 +120,6 @@
       { "PWD": "/var/www" },
       "$PS1 <span class='red'>convert</span> original.gif -resize 64x64 resized.gif",
       "$PS1 ls -l -h",
-      "total 9.5K",
       "-rw-r--r-- 1 $USERNAME $GROUPNAME 6.0K Jan 10  2009 original.gif",
       "-rw-r--r-- 1 $USERNAME $GROUPNAME 3.5K Jan 10  2009 resized.gif <span class=arrow>&larr;</span>",
       "$PS1"
@@ -151,7 +150,6 @@
       "$PS1 tar -x -v <span class='yellow'>-f archive.bz2</span> <span class='red'>-j</span>",
       "homework.txt",
       "$PS1 ls -l",
-      "total 32",
       "-rw-r--r-- 1 $USERNAME $GROUPNAME &nbsp; 6 Jun  5 18:50 homework.txt",
       "-rw-r--r-- 1 $USERNAME $GROUPNAME 130 Jun  5 18:50 archive.bz2",
       "$PS1 cat homework.txt",
@@ -195,6 +193,54 @@
       "$PS1 sudo <span class='yellow'>-u root</span> useradd -m student",
       "$PS1 tail -n 1 /etc/passwd",
       "student:x:<span class='red'>1000</span>:1000:student:/home/student:/bin/bash <span class=arrow>&larr;</span>",
+      "$PS1"
+    ]
+  },
+  {
+    "prompt": "Which program displays kernel build information?",
+    "accept": ["uname"],
+    "reject": ["w", "top", "whoami", "chmod", "modprobe"],
+    "explain": "The uname program displays version, release, and build information about the running kernel. Latest information about the Linux kernel project is available at kernel.org",
+    "links": [
+      {
+        "title": "Learning Materials - Topic 4.1",
+        "href": "https://learning.lpi.org/en/learning-materials/010-160/4/4.1/4.1_01/"
+      },
+      {
+        "title": "uname(1) - Linux man page",
+        "href": "https://linux.die.net/man/1/uname"
+      },
+      {
+        "title": "The Linux Kernel Archives",
+        "href": "https://kernel.org/"
+      }
+    ],
+    "terminal": [
+      "$PS1 uname",
+      "Linux",
+      "$PS1 uname -r",
+      "4.19.0-14-amd64",
+      "$PS1 uname -a",
+      "Linux github <span class='red'>4.19.0-14-amd64</span> #1 SMP Debian 4.19.171-2 (2021-01-30) x86_64 GNU/Linux",
+      "$PS1 dmesg | head -n 1",
+      "[    0.000000] Linux version <span class='red'>4.19.0-14-amd64</span> (debian-kernel@lists.debian.org) (gcc version 8.3.0 (Debian 8.3.0-6)) #1 SMP Debian 4.19.171-2 (2021-01-30)",
+      "$PS1 ls -l -d /boot/vmlinuz*",
+      "-rw-r--r-- &nbsp;1 root root 5278960 Jan 30 &nbsp;2021 /boot/<span class='red'>vmlinuz-4.19.0-14-amd64</span>",
+      "$PS1 ls -l /lib/modules",
+      "drwxr-xr-x 3 root root 4096 Mar 24  2021 4.19.0-14-amd64",
+      "$PS1 ls -l /lib/modules/$(uname -r)",
+      "drwxr-xr-x 12 root root &nbsp;&nbsp; 4096 Mar 24 &nbsp;2021 kernel",
+      "-rw-r--r-- &nbsp;1 root root 1132335 Mar 24 &nbsp;2021 modules.alias",
+      "-rw-r--r-- &nbsp;1 root root 1079546 Mar 24 &nbsp;2021 modules.alias.bin",
+      "-rw-r--r-- &nbsp;1 root root &nbsp;&nbsp; 4683 Jan 30 &nbsp;2021 modules.builtin",
+      "-rw-r--r-- &nbsp;1 root root &nbsp;&nbsp; 5999 Mar 24 &nbsp;2021 modules.builtin.bin",
+      "-rw-r--r-- &nbsp;1 root root &nbsp;434780 Mar 24 &nbsp;2021 modules.dep",
+      "-rw-r--r-- &nbsp;1 root root &nbsp;592745 Mar 24 &nbsp;2021 modules.dep.bin",
+      "-rw-r--r-- &nbsp;1 root root &nbsp;&nbsp;&nbsp; 456 Mar 24 &nbsp;2021 modules.devname",
+      "-rw-r--r-- &nbsp;1 root root &nbsp;140056 Jan 30 &nbsp;2021 modules.order",
+      "-rw-r--r-- &nbsp;1 root root &nbsp;&nbsp;&nbsp; 800 Mar 24 &nbsp;2021 modules.softdep",
+      "-rw-r--r-- &nbsp;1 root root &nbsp;507306 Mar 24 &nbsp;2021 modules.symbols",
+      "-rw-r--r-- &nbsp;1 root root &nbsp;626229 Mar 24 &nbsp;2021 modules.symbols.bin",
       "$PS1"
     ]
   }
