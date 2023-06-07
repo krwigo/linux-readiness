@@ -134,7 +134,11 @@ function CardText({ data, config, onNext }) {
 
   return (
     <div className="container cardtext">
-      <div className="prompt">{data.promptText || data.prompt}</div>
+      <div className="prompt">
+        <span
+          dangerouslySetInnerHTML={{ __html: data.promptText || data.prompt }}
+        ></span>
+      </div>
       <div className={`reveal-${reveal}`}>
         <label className={`choice guess-${!!guess} accept-${cmp(guess)}`}>
           <input
@@ -237,7 +241,10 @@ function CardCheck({ data, config, onNext }) {
   return (
     <div className="container cardcheck">
       <div className="prompt">
-        {data.promptCheck || data.prompt} (Choose {textMap[data.accept.length]})
+        <span
+          dangerouslySetInnerHTML={{ __html: data.promptCheck || data.prompt }}
+        ></span>{" "}
+        (Choose {textMap[data.accept.length]})
       </div>
       <div className={`reveal-${reveal}`}>
         {choices.map((x, i) => (
@@ -350,7 +357,11 @@ function CardRadio({ data, config, onNext }) {
 
   return (
     <div className="container cardradio">
-      <div className="prompt">{data.promptCheck || data.prompt}</div>
+      <div className="prompt">
+        <span
+          dangerouslySetInnerHTML={{ __html: data.promptRadio || data.prompt }}
+        ></span>
+      </div>
       <div className={`reveal-${reveal}`}>
         {choices.map((x, i) => (
           <label

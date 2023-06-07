@@ -1,6 +1,6 @@
 [
   {
-    "prompt": "What option(s) of the ls command display recursive contents?",
+    "prompt": "What option(s) of the <code>ls</code> command display recursive contents?",
     "accept": ["R", "recursive"],
     "reject": ["re", "Rec", "rr", "r"],
     "caseSensitive": true,
@@ -158,7 +158,7 @@
     ]
   },
   {
-    "prompt": "Which field corresponds to the UID of the /etc/passwd file?",
+    "prompt": "Which field corresponds to the UID of the <code>/etc/passwd</code> file?",
     "accept": ["3"],
     "reject": ["1", "7", "4", "2", "6"],
     "explain": "The /etc/passwd file specifies attributes for each user account in the system. Each field is separated by a colon \":\" character. The format follows the <code>USERNAME:PASSWORD:<strong>UID</strong>:GID:GECOS:HOMEDIR:SHELL</code> specification. Environment variables expose the current user's home directory path via the HOME variable.",
