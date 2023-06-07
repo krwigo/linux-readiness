@@ -243,5 +243,35 @@
       "-rw-r--r-- &nbsp;1 root root &nbsp;626229 Mar 24 &nbsp;2021 modules.symbols.bin",
       "$PS1"
     ]
+  },
+  {
+    "prompt": "What is the exit status given the command: <code>cat /etc/skel/</code>?",
+    "accept": ["1"],
+    "reject": ["255", "0", "-255", "2", "None"],
+    "explain": "Exit statuses, or error codes, are zero/non-zero values to determine if the previous operation was successful. A zero value indicates the operation was successful, whereas a non-zero value is an unsuccessful operation. Programs and scripts may choose what the status is for different scenarios.",
+    "links": [
+      {
+        "title": "Learning Materials - Topic 3.3 Lesson 2",
+        "href": "https://learning.lpi.org/en/learning-materials/010-160/3/3.3/3.3_02/"
+      },
+      {
+        "title": "cat(1) - Linux man page",
+        "href": "https://linux.die.net/man/1/cat"
+      },
+      {
+        "title": "Advanced Bash-Scripting Guide: Chapter 6. Exit and Exit Status",
+        "href": "https://linux.die.net/abs-guide/exit-status.html"
+      }
+    ],
+    "terminal": [
+      { "PWD": "/etc/" },
+      "$PS1 ls -l -d /etc/skel/",
+      "<span class='yellow'>d</span>rwxr-xr-x 2 root root 4096 Jan &nbsp;5 &nbsp;2020 /etc/skel/",
+      "$PS1 cat /etc/skel/",
+      "cat: /etc/skel/: Is a directory",
+      "$PS1 echo <span class='red'>$?</span>",
+      "1 <span class=arrow>&larr;</span>",
+      "$PS1"
+    ]
   }
 ]
