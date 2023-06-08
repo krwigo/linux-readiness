@@ -42,6 +42,10 @@ function Panel({ showPanel, setPanel, config }) {
   );
 }
 
+function autoSpace(i) {
+  return i.replaceAll("  ", " &nbsp;");
+}
+
 function Typer({ data }) {
   const el = useRef(null);
 
@@ -59,7 +63,7 @@ function Typer({ data }) {
       },
       {
         strings: "",
-        PS1: "<span class='user'>$USERNAME@$HOSTNAME:</span><span class='path'>$PWD</span><span class='access'>$PROMPTSU</span> ",
+        PS1: "<span class='user'>$USERNAME@$HOSTNAME:</span><span class='path'>$PWD</span><span class='access'>$PROMPTSU</span>",
         PWD: "/boot",
         PATH: "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
         HOME: "/home/myuser",
@@ -70,7 +74,7 @@ function Typer({ data }) {
       }
     );
     const typed = new Typed(el.current, {
-      strings: [render.strings],
+      strings: [autoSpace(render.strings)],
       typeSpeed: +localStorage.getItem("speed") || 0,
     });
     return () => typed.destroy();

@@ -49,7 +49,7 @@
       "",
       "./Pictures:",
       "vacation.jpg",
-      "$PS1"
+      "$PS1 "
     ]
   },
   {
@@ -98,14 +98,14 @@
       "[    3.157555] EXT4-fs (<span class='red'>sda</span>1): mounted filesystem with ordered data mode. Opts: (null)",
       "[    3.615743] EXT4-fs (<span class='red'>sda</span>1): re-mounted. Opts: errors=remount-ro",
       "[    5.020339] Adding 998396k swap on /dev/<span class='red'>sda</span>5.  Priority:-2 extents:1 across:998396k FS",
-      "$PS1"
+      "$PS1 "
     ]
   },
   {
     "prompt": "Which application(s) are frequently executed by web servers?",
     "accept": ["ImageMagick"],
     "reject": ["GIMP", "Blender", "/etc/passwd", "Ubuntu"],
-    "explain": "Websites with server side components frequently use <strong>ImageMagick</strong> to resize and crop pictures. For example, a forum may create avatars or thumbnails in smaller resolutions to reduce storage and transfer sizes. GIMP and Blender are multimedia applications for raster image editing and video rendering. The /etc/passwd file contains a list of user accounts. Ubuntu is a distribution based on Debian.",
+    "explain": "Websites with server side components frequently use <strong>ImageMagick</strong> to resize and crop pictures. For example, a forum may create avatars or thumbnails in smaller resolutions to reduce storage and transfer sizes. GIMP and Blender are multimedia applications for raster image editing and video rendering. The <code>/etc/passwd</code> file contains a list of user accounts. Ubuntu is a distribution based on Debian.",
     "links": [
       {
         "title": "Learning Materials - Topic 1.2",
@@ -122,7 +122,7 @@
       "$PS1 ls -l -h",
       "-rw-r--r-- 1 $USERNAME $GROUPNAME 6.0K Jan 10  2009 original.gif",
       "-rw-r--r-- 1 $USERNAME $GROUPNAME 3.5K Jan 10  2009 resized.gif <span class=arrow>&larr;</span>",
-      "$PS1"
+      "$PS1 "
     ]
   },
   {
@@ -150,11 +150,11 @@
       "$PS1 tar -x -v <span class='yellow'>-f archive.bz2</span> <span class='red'>-j</span>",
       "homework.txt",
       "$PS1 ls -l",
-      "-rw-r--r-- 1 $USERNAME $GROUPNAME &nbsp; 6 Jun  5 18:50 homework.txt",
+      "-rw-r--r-- 1 $USERNAME $GROUPNAME   6 Jun  5 18:50 homework.txt",
       "-rw-r--r-- 1 $USERNAME $GROUPNAME 130 Jun  5 18:50 archive.bz2",
       "$PS1 cat homework.txt",
       "linux",
-      "$PS1"
+      "$PS1 "
     ]
   },
   {
@@ -193,7 +193,7 @@
       "$PS1 sudo <span class='yellow'>-u root</span> useradd -m student",
       "$PS1 tail -n 1 /etc/passwd",
       "student:x:<span class='red'>1000</span>:1000:student:/home/student:/bin/bash <span class=arrow>&larr;</span>",
-      "$PS1"
+      "$PS1 "
     ]
   },
   {
@@ -225,23 +225,23 @@
       "$PS1 dmesg | head -n 1",
       "[    0.000000] Linux version <span class='red'>4.19.0-14-amd64</span> (debian-kernel@lists.debian.org) (gcc version 8.3.0 (Debian 8.3.0-6)) #1 SMP Debian 4.19.171-2 (2021-01-30)",
       "$PS1 ls -l -d /boot/vmlinuz*",
-      "-rw-r--r-- &nbsp;1 root root 5278960 Jan 30 &nbsp;2021 /boot/<span class='red'>vmlinuz-4.19.0-14-amd64</span>",
+      "-rw-r--r--  1 root root 5278960 Jan 30  2021 /boot/<span class='red'>vmlinuz-4.19.0-14-amd64</span>",
       "$PS1 ls -l /lib/modules",
       "drwxr-xr-x 3 root root 4096 Mar 24  2021 4.19.0-14-amd64",
       "$PS1 ls -l /lib/modules/$(uname -r)",
-      "drwxr-xr-x 12 root root &nbsp;&nbsp; 4096 Mar 24 &nbsp;2021 kernel",
-      "-rw-r--r-- &nbsp;1 root root 1132335 Mar 24 &nbsp;2021 modules.alias",
-      "-rw-r--r-- &nbsp;1 root root 1079546 Mar 24 &nbsp;2021 modules.alias.bin",
-      "-rw-r--r-- &nbsp;1 root root &nbsp;&nbsp; 4683 Jan 30 &nbsp;2021 modules.builtin",
-      "-rw-r--r-- &nbsp;1 root root &nbsp;&nbsp; 5999 Mar 24 &nbsp;2021 modules.builtin.bin",
-      "-rw-r--r-- &nbsp;1 root root &nbsp;434780 Mar 24 &nbsp;2021 modules.dep",
-      "-rw-r--r-- &nbsp;1 root root &nbsp;592745 Mar 24 &nbsp;2021 modules.dep.bin",
-      "-rw-r--r-- &nbsp;1 root root &nbsp;&nbsp;&nbsp; 456 Mar 24 &nbsp;2021 modules.devname",
-      "-rw-r--r-- &nbsp;1 root root &nbsp;140056 Jan 30 &nbsp;2021 modules.order",
-      "-rw-r--r-- &nbsp;1 root root &nbsp;&nbsp;&nbsp; 800 Mar 24 &nbsp;2021 modules.softdep",
-      "-rw-r--r-- &nbsp;1 root root &nbsp;507306 Mar 24 &nbsp;2021 modules.symbols",
-      "-rw-r--r-- &nbsp;1 root root &nbsp;626229 Mar 24 &nbsp;2021 modules.symbols.bin",
-      "$PS1"
+      "drwxr-xr-x 12 root root    4096 Mar 24  2021 kernel",
+      "-rw-r--r--  1 root root 1132335 Mar 24  2021 modules.alias",
+      "-rw-r--r--  1 root root 1079546 Mar 24  2021 modules.alias.bin",
+      "-rw-r--r--  1 root root    4683 Jan 30  2021 modules.builtin",
+      "-rw-r--r--  1 root root    5999 Mar 24  2021 modules.builtin.bin",
+      "-rw-r--r--  1 root root  434780 Mar 24  2021 modules.dep",
+      "-rw-r--r--  1 root root  592745 Mar 24  2021 modules.dep.bin",
+      "-rw-r--r--  1 root root     456 Mar 24  2021 modules.devname",
+      "-rw-r--r--  1 root root  140056 Jan 30  2021 modules.order",
+      "-rw-r--r--  1 root root     800 Mar 24  2021 modules.softdep",
+      "-rw-r--r--  1 root root  507306 Mar 24  2021 modules.symbols",
+      "-rw-r--r--  1 root root  626229 Mar 24  2021 modules.symbols.bin",
+      "$PS1 "
     ]
   },
   {
@@ -266,12 +266,12 @@
     "terminal": [
       { "PWD": "/etc/" },
       "$PS1 ls -l -d /etc/skel/",
-      "<span class='yellow'>d</span>rwxr-xr-x 2 root root 4096 Jan &nbsp;5 &nbsp;2020 /etc/skel/",
+      "<span class='yellow'>d</span>rwxr-xr-x 2 root root 4096 Jan  5  2020 /etc/skel/",
       "$PS1 cat /etc/skel/",
       "cat: /etc/skel/: Is a directory",
       "$PS1 echo <span class='red'>$?</span>",
       "1 <span class=arrow>&larr;</span>",
-      "$PS1"
+      "$PS1 "
     ]
   },
   {
@@ -312,14 +312,14 @@
       "Type 'help;' or '\\h' for help. Type '\\c' to clear the current input statement.",
       "MariaDB [(none)]> <span class='yellow'>SELECT NOW();</span>",
       "+---------------------+",
-      "| NOW() &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |",
+      "| NOW()               |",
       "+---------------------+",
       "| 1999-06-07 13:46:38 |",
       "+---------------------+",
       "1 row in set (0.001 sec)",
       "MariaDB [(none)]> exit",
       "Bye",
-      "$PS1"
+      "$PS1 "
     ]
   },
   {
@@ -354,15 +354,61 @@
       "$PS1 passwd --help",
       "Usage: passwd [options] [LOGIN]",
       "Options:",
-      " -a, --all &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; report password status on all accounts",
-      " -d, --delete &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delete the password for the named account",
-      " -e, --expire &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; force expire the password for the named account",
-      " -h, --help &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; display this help message and exit",
-      " -k, --keep-tokens &nbsp;change password only if expired",
-      " <span class='yellow'>-l</span>, <span class='yellow'>--lock</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lock the password of the named account",
-      " -S, --status &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; report password status on the named account",
-      " -u, --unlock &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; unlock the password of the named account",
-      "$PS1"
+      " -a, --all          report password status on all accounts",
+      " -d, --delete       delete the password for the named account",
+      " -e, --expire       force expire the password for the named account",
+      " -h, --help         display this help message and exit",
+      " -k, --keep-tokens  change password only if expired",
+      " <span class='yellow'>-l</span>, <span class='yellow'>--lock</span>         lock the password of the named account",
+      " -S, --status       report password status on the named account",
+      " -u, --unlock       unlock the password of the named account",
+      "$PS1 "
+    ]
+  },
+  {
+    "prompt": "Programs send error messages to which channel?",
+    "accept": ["2", "stderr"],
+    "reject": [
+      "stdout",
+      "0",
+      "1",
+      "/dev/sda2",
+      "/proc/channel/error",
+      "/dev/errno",
+      "/dev/fd/error",
+      "/var/log/errors"
+    ],
+    "explain": "All processes have three channels: standard input, standard output, and standard error. A file descriptor represents each of the buffers: 0, 1, 2 respectively. IO redirection syntax is written as <span class=option>&gt;</span> to redirect standard output while overwriting the destination; <span class=option>&gt;&gt;</span> to redirect standard output while appending to the destination; <span class=option>2&gt;</span> to redirec tthe standard error channel. Channels can be combined and piped as well. The <span class=option>2&gt;&1</span> syntax smashes standard error (2) into standard output (1).",
+    "links": [
+      {
+        "title": "Learning Materials - Topic 3.2 Lesson 1",
+        "href": "https://learning.lpi.org/en/learning-materials/010-160/3/3.2/3.2_01/"
+      },
+      {
+        "title": "Linux Crash Course - Data Streams (stdin, stdout & stderr)",
+        "href": "https://www.youtube.com/watch?v=zMKacHGuIHI"
+      }
+    ],
+    "terminal": [
+      {
+        "PWD": "/etc",
+        "HOSTNAME": "centos",
+        "USERNAME": "student",
+        "GROUPNAME": "students"
+      },
+      "$PS1 cat /etc/hostname",
+      "$HOSTNAME",
+      "$PS1 cat /etc/hostname /etc/shadow /etc/skel/",
+      "$HOSTNAME",
+      "cat: /etc/shadow: Permission denied",
+      "cat: /etc/skel/: Is a directory",
+      "$PS1 cat /etc/hostname /etc/shadow /etc/skel/ > output.txt 2> error.txt",
+      "$PS1 cat output.txt",
+      "$HOSTNAME",
+      "$PS1 cat error.txt <span class=arrow>&larr;</span>",
+      "cat: /etc/shadow: <span class='yellow'>Permission denied</span>",
+      "cat: /etc/skel/: <span class='yellow'>Is a directory</span>",
+      "$PS1 "
     ]
   }
 ]

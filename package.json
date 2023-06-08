@@ -29,6 +29,8 @@
     "lint": "prettier -w .",
     "build": "npm run lint && webpack build --config .webpack.config.js --mode production",
     "serve": "webpack serve --config .webpack.config.js",
-    "stage": "npm run build && git add . && git status"
+    "stage": "npm run build && git add . && git status",
+    "ubuntu": "docker run -it --rm ubuntu",
+    "centos": "docker run -it --rm centos"
   }
 }
