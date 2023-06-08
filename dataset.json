@@ -410,5 +410,42 @@
       "cat: /etc/skel/: <span class='yellow'>Is a directory</span>",
       "$PS1 "
     ]
+  },
+  {
+    "prompt": "The shebang is represented by which two letter sequence?",
+    "accept": ["#!"],
+    "reject": ["$$", "$?", "/?", "##", "$#", "--"],
+    "explain": "The two letter <span class=option>#!</span> shebang must be on the first line of a shell script to identify which interpreter will be executed. Common interpreters include <code>/bin/bash</code>, <code>/bin/sh</code>, <code>/usr/bin/perl</code>, and <code>/usr/bin/python3</code>. Executable shell scripts should have the <span class=option>+x</span> permission.",
+    "links": [
+      {
+        "title": "Learning Materials - Topic 3.3 Lesson 2",
+        "href": "https://learning.lpi.org/en/learning-materials/010-160/3/3.3/3.3_02/"
+      },
+      {
+        "title": "YouTube Search: shebang interpreter #!",
+        "href": "https://www.youtube.com/results?search_query=shebang+interpreter+%23!"
+      }
+    ],
+    "terminal": [
+      {
+        "PWD": "~",
+        "HOSTNAME": "centos",
+        "USERNAME": "student",
+        "GROUPNAME": "students"
+      },
+      "$PS1 ls -l script.sh",
+      "-rw-r--r-- 1 $USERNAME $GROUPNAME 41 Jun  8 23:16 script.sh",
+      "$PS1 cat script.sh",
+      "#!/usr/bin/bash <span class=arrow>&larr;</span>",
+      "echo the date is $(date)",
+      "$PS1 ./script.sh",
+      "bash: ./script.sh: <span class='yellow'>Permission denied</span>",
+      "$PS1 chmod -R <span class='red'>+x</span> script.sh",
+      "$PS1 ls -l script.sh",
+      "-<span class='yellow'>rwxr-xr-x</span> 1 $USERNAME $GROUPNAME 41 Jun  8 23:16 script.sh",
+      "$PS1 ./script.sh",
+      "the date is Thu Jun 8 23:16:32 UTC 2021",
+      "$PS1 "
+    ]
   }
 ]
