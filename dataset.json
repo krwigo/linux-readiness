@@ -447,5 +447,58 @@
       "the date is Thu Jun 8 23:16:32 UTC 2021",
       "$PS1 "
     ]
+  },
+  {
+    "prompt": "Which command(s) display IP routing information?",
+    "accept": ["route", "ip"],
+    "reject": [
+      "netstat",
+      "ping",
+      "ifconfig",
+      "cat",
+      "dig",
+      "netstat",
+      "nslookup"
+    ],
+    "explain": "Computers are assigned an IP address within a network. Gateway servers provide uplink access to distant networks. IP routing information helps the system know which gateway should be used through subnet masking. The <code>ip route show</code> and <code>route</code> commands display routing information.",
+    "links": [
+      {
+        "title": "Learning Materials - Topic 4.4",
+        "href": "https://learning.lpi.org/en/learning-materials/010-160/4/4.4/4.4_01/"
+      },
+      {
+        "title": "ip(8) - Linux man page",
+        "href": "https://linux.die.net/man/8/ip"
+      },
+      {
+        "title": "route(8) - Linux man page",
+        "href": "https://linux.die.net/man/8/route"
+      }
+    ],
+    "terminal": [
+      {
+        "PWD": "~",
+        "HOSTNAME": "ubuntu",
+        "USERNAME": "root",
+        "GROUPNAME": "root",
+        "PROMPTSU": "#"
+      },
+      "$PS1 apt-get install net-tools",
+      "Reading package lists... Done",
+      "Building dependency tree... Done",
+      "Reading state information... Done",
+      "iproute2 is already the newest version (5.15.0-1ubuntu2).",
+      "net-tools is already the newest version (1.60-1ubuntu5).",
+      "0 upgraded, 0 newly installed, 0 to remove and 7 not upgraded.",
+      "$PS1 route <span class=arrow>&larr;</span>",
+      "Kernel IP routing table",
+      "Destination   Gateway       Genmask         Flags Metric Ref    Use Iface",
+      "<span class='yellow'>default</span>       172.17.0.1    0.0.0.0         UG    0      0        0 eth0",
+      "172.17.0.0    0.0.0.0       255.255.0.0     U     0      0        0 eth0",
+      "$PS1 ip route show <span class=arrow>&larr;</span>",
+      "<span class='yellow'>default</span> via 172.17.0.1 dev eth0",
+      "172.17.0.0/16 dev eth0 proto kernel scope link src 172.17.0.2",
+      "$PS1 "
+    ]
   }
 ]
