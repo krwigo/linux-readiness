@@ -513,7 +513,7 @@
       "whereis passwd"
     ],
     "styleIgnore": ["cardtext"],
-    "explain": "The usage requires an optional path before any expressions.<pre>find [path...] [expression]</pre>Helpful expressions are:<ul><li><span class=option>-type f</span> for files</li><li><span class=option>-type d</span> for directories</li><li><span class=option>-name pattern</span> to filter names</li><li><span class=option>-iname pattern</span> to filter names while ignoring cases</li><li><span class=option>-exec cmd</span> to execute an external command</li></ul>",
+    "explain": "The usage requires an optional path before any expressions.<pre>find [path...] [expression]</pre>Helpful expressions are:<ul><li><span class=option>-type f</span> for files</li><li><span class=option>-type d</span> for directories</li><li><span class=option>-name pattern</span> to filter names</li><li><span class=option>-iname pattern</span> to filter names while ignoring cases</li><li><span class=option>-exec command</span> to execute an external command</li></ul>",
     "links": [
       {
         "title": "Learning Materials - Topic 3.2 Lesson 1",
@@ -567,14 +567,13 @@
     "terminal": [
       {
         "PWD": "/",
+        "HOSTNAME": "rpi",
         "USERNAME": "root",
         "GROUPNAME": "root",
         "PROMPTSU": "#"
       },
       "$PS1 dmesg | grep mmc",
       "[    0.000000] Kernel command line: coherent_pool=1M 8250.nr_uarts=0 cma=256M vc_mem.mem_size=0x40000000 root=/dev/<span class='red'>mmc</span>blk0p3 rootfstype=ext4 rootwait",
-      "[    0.708368] <span class='red'>mmc</span>-bcm2835 3f300000.<span class='red'>mmc</span>nr: <span class='red'>mmc</span>_debug:0 <span class='red'>mmc</span>_debug2:0",
-      "[    0.708405] <span class='red'>mmc</span>-bcm2835 3f300000.<span class='red'>mmc</span>nr: DMA channel allocated",
       "[    0.786185] <span class='red'>mmc</span>0: sdhost-bcm2835 loaded - DMA enabled (>1)",
       "[    0.792205] Waiting for root device /dev/<span class='red'>mmc</span>blk0p3...",
       "[    0.845219] <span class='red'>mmc</span>0: host does not support reading read-only switch, assuming write-enable",
@@ -584,6 +583,45 @@
       "[    2.412881] EXT4-fs (<span class='red'>mmc</span>blk0p3): mounted filesystem with ordered data mode. Opts: (null)",
       "[   12.924021] EXT4-fs (<span class='red'>mmc</span>blk0p3): re-mounted. Opts: (null)",
       "[   13.545641] Adding 2097148k swap on /dev/<span class='red'>mmc</span>blk0p2. Priority:-2 extents:1 across:2097148k SSFS",
+      "$PS1 "
+    ]
+  },
+  {
+    "prompt": "Which command(s) are command line web clients?",
+    "accept": ["wget", "cURL"],
+    "reject": ["Apache", "NGINX", "GIMP", "figlet", "wput", "Firefox", "yum"],
+    "explain": "Web clients and servers typically communicate through the HTTP protocol encapsulated with SSL encryption. Web browsers are great for displaying visual renderings of web pages but are not necessary to download files or upload payloads. <code>wget</code> and <code>curl</code> are common command line programs used in conjunction with web server requests.",
+    "links": [
+      {
+        "title": "Learning Materials - Topic 1.2",
+        "href": "https://learning.lpi.org/en/learning-materials/010-160/1/1.2/1.2_01/"
+      },
+      {
+        "title": "wget(1) - Linux man page",
+        "href": "https://linux.die.net/man/1/wget"
+      },
+      {
+        "title": "curl(1) - Linux man page",
+        "href": "https://linux.die.net/man/1/curl"
+      }
+    ],
+    "terminal": [
+      {
+        "PWD": "~",
+        "HOSTNAME": "opensuse"
+      },
+      "$PS1 wget \"cdn.kernel.org/pub/linux/kernel/v6.x/<span class='yellow'>linux-6.0.tar.xz</span>\"",
+      "Resolving cdn.kernel.org (cdn.kernel.org)... 151.101.1.176, ...",
+      "Connecting to cdn.kernel.org|151.101.1.176|:443... connected.",
+      "HTTP request sent, awaiting response... 200 OK",
+      "Length: 133886176 (128M) [application/x-xz]",
+      "Saving to: 'linux-6.0.tar.xz'",
+      "linux-6.0.tar.xz   100%[=================>] 127.68M  43.0MB/s  in 3.0s",
+      "(43.0 MB/s) - 'linux-6.0.tar.xz' saved [133886176/133886176]",
+      "$PS1 ls -l -h linux-6.0.tar.xz",
+      "-rw-r--r-- 1 $USERNAME $GROUPNAME <span class='yellow'>128M</span> Oct  3  2022 linux-6.0.tar.xz",
+      "$PS1 curl -sL lpi.org | grep \"&lt;title\"",
+      "&lt;<span class='red'>title</span>&gt;Linux Professional Institute &lt;/title&gt;",
       "$PS1 "
     ]
   }

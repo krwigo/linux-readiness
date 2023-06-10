@@ -8,6 +8,11 @@ html {
   overflow-y: scroll;
 }
 
+pre {
+  margin: 1rem 0;
+  color: var(--bs-code-color);
+}
+
 .nav {
   display: flex;
   align-items: center;
