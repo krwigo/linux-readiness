@@ -610,7 +610,7 @@
         "PWD": "~",
         "HOSTNAME": "opensuse"
       },
-      "$PS1 wget \"cdn.kernel.org/pub/linux/kernel/v6.x/<span class='yellow'>linux-6.0.tar.xz</span>\"",
+      "$PS1 wget cdn.kernel.org/pub/linux/kernel/v6.x/<span class='yellow'>linux-6.0.tar.xz</span>",
       "Resolving cdn.kernel.org (cdn.kernel.org)... 151.101.1.176, ...",
       "Connecting to cdn.kernel.org|151.101.1.176|:443... connected.",
       "HTTP request sent, awaiting response... 200 OK",
@@ -621,7 +621,7 @@
       "$PS1 ls -l -h linux-6.0.tar.xz",
       "-rw-r--r-- 1 $USERNAME $GROUPNAME <span class='yellow'>128M</span> Oct  3  2022 linux-6.0.tar.xz",
       "$PS1 curl -sL lpi.org | grep \"&lt;title\"",
-      "&lt;<span class='red'>title</span>&gt;Linux Professional Institute &lt;/title&gt;",
+      "&lt;<span class='red'>title</span>&gt;Linux Professional Institute &lt;/<span class='red'>title</span>&gt;",
       "$PS1 "
     ]
   }

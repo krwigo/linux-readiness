@@ -32,7 +32,12 @@ function Panel({ showPanel, setPanel, config }) {
       <Offcanvas.Body>
         <ol start="1">
           {config.styles.map((style, i) => (
-            <li key={i} className={i == config.styleindex ? "active" : ""}>
+            <li
+              key={i}
+              className={
+                i == config.styleindex % config.styles.length ? "active" : ""
+              }
+            >
               {style}
             </li>
           ))}
@@ -485,6 +490,18 @@ function Main() {
         .sort(randomSort),
     });
     onNext();
+  }, []);
+
+  useEffect(() => {
+    const cb = (e) => {
+      if (e?.key == "n") {
+        onNext();
+      } else {
+        console.log(e?.type, e);
+      }
+    };
+    document.body.addEventListener("keyup", cb);
+    return () => document.body.removeEventListener("keyup", cb);
   }, []);
 
   const [theme, setTheme] = useState(() => {
