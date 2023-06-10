@@ -502,7 +502,7 @@
     ]
   },
   {
-    "prompt": "Which of the following commands will locate the <code>/etc/passwd</code> file??",
+    "prompt": "Which of the following commands will locate the <code>/etc/passwd</code> file?",
     "accept": ["find /etc -name passwd"],
     "reject": [
       "grep -i passwd /etc",
@@ -546,6 +546,44 @@
       "Modify: 2022-05-22 14:04:11.000000000 +0000",
       "Change: 2022-06-09 00:55:46.490852151 +0000",
       "Birth: 2022-06-09 00:55:46.490852151 +0000",
+      "$PS1 "
+    ]
+  },
+  {
+    "prompt": "Where are critical operating system launched from on a Raspberry Pi device?",
+    "accept": ["microSD"],
+    "reject": ["PXE", "CDROM", "BIOS", "CPU", "USB", "Wifi"],
+    "explain": "Raspberry Pi devices are low-cost, card sized computers for small projects and educational environments. They do not contain hard disk or solid state drives. While most hardware versions include a <strong>microSD</strong> card slot, early versions included a full sized <strong>SD</strong> card slot. Network booting is possible but depends on firmware upgrades not included by manufacturers.",
+    "links": [
+      {
+        "title": "Learning Materials - Topic 1.1",
+        "href": "https://learning.lpi.org/en/learning-materials/010-160/1/1.1/1.1_01/"
+      },
+      {
+        "title": "Raspberry Pi - Homepage",
+        "href": "https://www.raspberrypi.com/"
+      }
+    ],
+    "terminal": [
+      {
+        "PWD": "/",
+        "USERNAME": "root",
+        "GROUPNAME": "root",
+        "PROMPTSU": "#"
+      },
+      "$PS1 dmesg | grep mmc",
+      "[    0.000000] Kernel command line: coherent_pool=1M 8250.nr_uarts=0 cma=256M vc_mem.mem_size=0x40000000 root=/dev/<span class='red'>mmc</span>blk0p3 rootfstype=ext4 rootwait",
+      "[    0.708368] <span class='red'>mmc</span>-bcm2835 3f300000.<span class='red'>mmc</span>nr: <span class='red'>mmc</span>_debug:0 <span class='red'>mmc</span>_debug2:0",
+      "[    0.708405] <span class='red'>mmc</span>-bcm2835 3f300000.<span class='red'>mmc</span>nr: DMA channel allocated",
+      "[    0.786185] <span class='red'>mmc</span>0: sdhost-bcm2835 loaded - DMA enabled (>1)",
+      "[    0.792205] Waiting for root device /dev/<span class='red'>mmc</span>blk0p3...",
+      "[    0.845219] <span class='red'>mmc</span>0: host does not support reading read-only switch, assuming write-enable",
+      "[    0.848286] <span class='red'>mmc</span>0: new high speed <span class='yellow'>SDHC</span> card at address 59b4",
+      "[    0.850186] <span class='red'>mmc</span>blk0: <span class='red'>mmc</span>0:59b4 USD   7.39 GiB",
+      "[    0.852665]  <span class='red'>mmc</span>blk0: <span class='yellow'>p1 p2 p3</span>",
+      "[    2.412881] EXT4-fs (<span class='red'>mmc</span>blk0p3): mounted filesystem with ordered data mode. Opts: (null)",
+      "[   12.924021] EXT4-fs (<span class='red'>mmc</span>blk0p3): re-mounted. Opts: (null)",
+      "[   13.545641] Adding 2097148k swap on /dev/<span class='red'>mmc</span>blk0p2. Priority:-2 extents:1 across:2097148k SSFS",
       "$PS1 "
     ]
   }
