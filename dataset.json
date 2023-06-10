@@ -500,5 +500,53 @@
       "172.17.0.0    0.0.0.0       255.255.0.0     U     0      0        0 eth0",
       "$PS1 "
     ]
+  },
+  {
+    "prompt": "Which of the following commands will locate the <code>/etc/passwd</code> file??",
+    "accept": ["find /etc -name passwd"],
+    "reject": [
+      "grep -i passwd /etc",
+      "find -name passwd /etc",
+      "tar -xzvf passwd /",
+      "ls -R /find passwd",
+      "find /*.* -name passwd",
+      "whereis passwd"
+    ],
+    "styleIgnore": ["cardtext"],
+    "explain": "The usage requires an optional path before any expressions.<pre>find [path...] [expression]</pre>Helpful expressions are:<ul><li><span class=option>-type f</span> for files</li><li><span class=option>-type d</span> for directories</li><li><span class=option>-name pattern</span> to filter names</li><li><span class=option>-iname pattern</span> to filter names while ignoring cases</li><li><span class=option>-exec cmd</span> to execute an external command</li></ul>",
+    "links": [
+      {
+        "title": "Learning Materials - Topic 3.2 Lesson 1",
+        "href": "https://learning.lpi.org/en/learning-materials/010-160/3/3.2/3.2_01/"
+      },
+      {
+        "title": "find(1) - Linux man page",
+        "href": "https://linux.die.net/man/1/find"
+      },
+      {
+        "title": "stat(1) - Linux man page",
+        "href": "https://linux.die.net/man/1/stat"
+      }
+    ],
+    "terminal": [
+      {
+        "PWD": "/etc"
+      },
+      "$PS1 find -name passwd /",
+      "find: <span class='red'>paths must precede expression: '/'</span>",
+      "find: possible unquoted pattern after predicate '-name'?",
+      "$PS1 find /etc -name passwd <span class=arrow>&larr;</span>",
+      "/etc/passwd",
+      "$PS1 find /etc -name passwd <span class='yellow'>-exec stat \"{}\" \\;</span>",
+      "File: /etc/passwd",
+      "Size: 922          Blocks: 8       IO Block: 4096   regular file",
+      "Device: 74h/116d   Inode: 807214   Links: 1",
+      "Access: (0644/-rw-r--r--)  Uid: (0/root)  Gid: (0/root)",
+      "Access: 2022-05-22 14:04:11.000000000 +0000",
+      "Modify: 2022-05-22 14:04:11.000000000 +0000",
+      "Change: 2022-06-09 00:55:46.490852151 +0000",
+      "Birth: 2022-06-09 00:55:46.490852151 +0000",
+      "$PS1 "
+    ]
   }
 ]

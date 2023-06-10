@@ -108,9 +108,11 @@ html {
   padding: 0;
   box-sizing: border-box;
 }
+
 .toolbar button:last-of-type {
   margin-right: 8px;
 }
+
 .toolbar button:not(:first-of-type) {
   background: linear-gradient(#7d7871 0%, #595953 100%);
   text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.2);
@@ -176,11 +178,14 @@ html {
 .user {
   color: #87d441;
 }
+
 .path,
-.directory,
-.d {
+.d,
+.dir,
+.directory {
   color: #a4c9ff;
 }
+
 .access {
   color: #ddd;
 }
@@ -199,6 +204,11 @@ html {
 
 .cyan {
   color: #0ff;
+}
+
+.tr,
+.transparent {
+  color: transparent;
 }
 
 .arrow {
@@ -254,11 +264,12 @@ html {
 .larrow {
   position: relative;
 }
+
 .larrow:after {
   content: "↙";
   animation: 1s larrow infinite linear;
   font-size: 5em;
-  color: red;
+  color: #f00;
   line-height: 1px;
   position: absolute;
   top: 0;
