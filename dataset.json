@@ -126,7 +126,7 @@
     ]
   },
   {
-    "prompt": "Which tar options(s) enable the bzip2 compression algorithm?",
+    "prompt": "Which tar option(s) enable the bzip2 compression algorithm?",
     "accept": ["j"],
     "reject": ["c", "x", "z", "f", "J"],
     "caseSensitive": true,
