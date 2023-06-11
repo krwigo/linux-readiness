@@ -48,7 +48,12 @@ function Panel({ showPanel, setPanel, config }) {
 }
 
 function autoSpace(i) {
-  return i.replaceAll("  ", " &nbsp;");
+  return i.replaceAll("  ", "&nbsp;&nbsp;");
+  // ref: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace#specifying_a_function_as_the_replacement
+  // return i.replaceAll("  ", function (match, /*p1, p2, pN,*/ offset, string, groups) {
+  // console.log({match, /*p1, p2, pN,*/ offset, string, groups});
+  // return match;
+  // });
 }
 
 function Typer({ data }) {

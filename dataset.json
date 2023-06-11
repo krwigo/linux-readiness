@@ -130,7 +130,7 @@
     "accept": ["j"],
     "reject": ["c", "x", "z", "f", "J"],
     "caseSensitive": true,
-    "explain": "The tar \"tape archive\" program supports mutliple compression algorithms including gzip, bzip2, and xz. Specifying the <span class=option>-j</span> <span class=option>--bzip2</span> option outputs a bzip2 compressed archive during <span class=option>-c</span> <span class=option>--create</span> mode or inputs a bzip2 compressed archive during <span class=option>-x</span> <span class=option>--extract</span> mode. Related options include <span class=option>-z</span> <span class=option>--gzip</span> for gzip compression; <span class=option>-J</span> <span class=option>-xz</span> for xz compression; <span class=option>-v</span> <span class=option>--verbose</span> for increased verbosity; and <span class=option>-f &lt;name&gt;</span> <span class=option>--file &lt;name&gt;</span> to specify the archive file in context.",
+    "explain": "The tar \"tape archive\" program supports mutliple compression algorithms including gzip, bzip2, and xz. Specifying the <span class=option>-j</span> <span class=option>--bzip2</span> option outputs a bzip2 compressed archive during <span class=option>-c</span> <span class=option>--create</span> mode or inputs a bzip2 compressed archive during <span class=option>-x</span> <span class=option>--extract</span> mode. Related options include <span class=option>-z</span> <span class=option>--gzip</span> for gzip compression; <span class=option>-J</span> <span class=option>-xz</span> for xz compression; <span class=option>-v</span> <span class=option>--verbose</span> for increased verbosity; and <span class=option>-f name</span> <span class=option>--file name</span> to specify the archive file in context.",
     "links": [
       {
         "title": "Learning Materials - Topic 3.1",
@@ -219,7 +219,7 @@
       "$PS1 uname",
       "Linux",
       "$PS1 uname -r",
-      "4.19.0-14-amd64",
+      "<span class='red'>4.19.0-14-amd64</span>",
       "$PS1 uname -a",
       "Linux github <span class='red'>4.19.0-14-amd64</span> #1 SMP Debian 4.19.171-2 (2021-01-30) x86_64 GNU/Linux",
       "$PS1 dmesg | head -n 1",
@@ -227,7 +227,7 @@
       "$PS1 ls -l -d /boot/vmlinuz*",
       "-rw-r--r--  1 root root 5278960 Jan 30  2021 /boot/<span class='red'>vmlinuz-4.19.0-14-amd64</span>",
       "$PS1 ls -l /lib/modules",
-      "drwxr-xr-x 3 root root 4096 Mar 24  2021 4.19.0-14-amd64",
+      "drwxr-xr-x  3 root root    4096 Mar 24  2021 4.19.0-14-amd64",
       "$PS1 ls -l /lib/modules/$(uname -r)",
       "drwxr-xr-x 12 root root    4096 Mar 24  2021 kernel",
       "-rw-r--r--  1 root root 1132335 Mar 24  2021 modules.alias",
@@ -656,6 +656,41 @@
       "color is red",
       "color is green",
       "color is blue",
+      "$PS1 "
+    ]
+  },
+  {
+    "prompt": "Memory information is parsed by which command?",
+    "accept": ["free"],
+    "reject": ["df", "tar", "lscpu", "cron", "cut"],
+    "explain": "Physical and virtual memory information is exposed by the Linux kernel via the <code>/proc/meminfo</code> file. The <span class=option>-m</span> option transforms values into megabytes. Some versions support an <span class=option>-h</span> option for human readable format.",
+    "links": [
+      {
+        "title": "Learning Materials - Topic 4.3 Lesson 1",
+        "href": "https://learning.lpi.org/en/learning-materials/010-160/4/4.3/4.3_01/"
+      },
+      {
+        "title": "free(1) - Linux man page",
+        "href": "https://linux.die.net/man/1/free"
+      }
+    ],
+    "terminal": [
+      {
+        "PWD": "~",
+        "HOSTNAME": "svr"
+      },
+      "$PS1 free",
+      "         total    used    free  shared  buff/cache  available",
+      "Mem:   <span class='yellow'>8148456</span> 5998192  914876   77876     1235388    1823752",
+      "Swap:  1047548  138040  909508",
+      "$PS1 free <span class='red'>-m</span>",
+      "         total    used    free  shared  buff/cache  available",
+      "Mem:      <span class='yellow'>7957</span>    5865     883      75        1208       1773",
+      "Swap:     1022     134     888",
+      "$PS1 free <span class='red'>-h</span>",
+      "         total    used    free  shared  buff/cache  available",
+      "Mem:     <span class='yellow'>7.8Gi</span>   5.8Gi   846Mi    76Mi       1.2Gi      1.7Gi",
+      "Swap:    1.0Gi   134Mi   888Mi",
       "$PS1 "
     ]
   }
