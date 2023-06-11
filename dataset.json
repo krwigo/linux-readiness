@@ -693,5 +693,58 @@
       "Swap:    1.0Gi   134Mi   888Mi",
       "$PS1 "
     ]
+  },
+  {
+    "prompt": "Which command(s) query Domain Name System (DNS) records?",
+    "accept": ["host", "dig"],
+    "reject": ["dnslookup", "dmap", "ifconfig", "ss", "ip", "bind"],
+    "explain": "Depending on the level of detail, <code>dig</code> and <code>host</code> can perform DNS queries. Dig offers more verbosity and operation timing, whereas host yields direct answers. Nameserver (NS), Mail Exchange (MX), IPv4 Address (A), IPv6 Address (AAAA), Canonical name (CNAME), Text (TXT), and Service (SRV) records are critical for network infrastructures.",
+    "links": [
+      {
+        "title": "Learning Materials - Topic 4.4",
+        "href": "https://learning.lpi.org/en/learning-materials/010-160/4/4.4/4.4_01/"
+      },
+      {
+        "title": "dig(1) - Linux man page",
+        "href": "https://linux.die.net/man/1/dig"
+      },
+      {
+        "title": "host(1) - Linux man page",
+        "href": "https://linux.die.net/man/1/host"
+      }
+    ],
+    "terminal": [
+      {
+        "PWD": "~",
+        "HOSTNAME": "svr"
+      },
+      "$PS1 dig A lpi.org <span class=arrow>&larr;</span>",
+      "; <<>> DiG 9.18.12 <<>> <span class='yellow'>A</span> lpi.org",
+      ";; global options: +cmd",
+      ";; Got answer:",
+      ";; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 8138",
+      ";; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1",
+      ";; OPT PSEUDOSECTION:",
+      "; EDNS: version: 0, flags:; udp: 512",
+      ";; QUESTION SECTION:",
+      ";lpi.org.         IN  A",
+      ";; ANSWER SECTION:",
+      "lpi.org.     571  IN  A  <span class='yellow'>65.39.134.147</span>",
+      ";; Query time: 24 msec",
+      ";; SERVER: 8.8.8.8#53(8.8.8.8) (UDP)",
+      ";; WHEN: Sun Jun 21 03:58:17 UTC 1999",
+      ";; MSG SIZE  rcvd: 52",
+      "$PS1 dig +short <span class='yellow'>A</span> lpi.org",
+      "65.39.134.147",
+      "$PS1 dig +short <span class='yellow'>NS</span> lpi.org",
+      "dns1.easydns.com.",
+      "dns2.easydns.net.",
+      "dns3.easydns.ca.",
+      "$PS1 dig +short <span class='yellow'>MX</span> lpi.org",
+      "0 aspmx.l.google.com.",
+      "5 alt1.aspmx.l.google.com.",
+      "10 aspmx3.googlemail.com.",
+      "$PS1 "
+    ]
   }
 ]
