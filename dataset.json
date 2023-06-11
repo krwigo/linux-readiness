@@ -620,8 +620,42 @@
       "(43.0 MB/s) - 'linux-6.0.tar.xz' saved [133886176/133886176]",
       "$PS1 ls -l -h linux-6.0.tar.xz",
       "-rw-r--r-- 1 $USERNAME $GROUPNAME <span class='yellow'>128M</span> Oct  3  2022 linux-6.0.tar.xz",
-      "$PS1 curl -sL lpi.org | grep \"&lt;title\"",
+      "$PS1 curl -sL lpi.org | grep title",
       "&lt;<span class='red'>title</span>&gt;Linux Professional Institute &lt;/<span class='red'>title</span>&gt;",
+      "$PS1 "
+    ]
+  },
+  {
+    "prompt": "Which keyword is missing from the following script?<pre>for color in red green blue\n  echo color is $color\ndone</pre>",
+    "accept": ["do"],
+    "reject": ["while", "then", "fi", "done", "read", "each", "unless"],
+    "explain": "For loops consist of a variable <span class=option>color</span>, collection <span class=option>red green blue</span>, and an action <span class=option>echo color is $color</span>. The action block is defined between <span class=option>do</span> and <span class=option>done</span> to allow for multiple actions. Simple globbign happens before execution.",
+    "links": [
+      {
+        "title": "Learning Materials - Topic 3.3 Lesson 2",
+        "href": "https://learning.lpi.org/en/learning-materials/010-160/3/3.3/3.3_02/"
+      },
+      {
+        "title": "Bash Guide for Beginners - 9.1. The for loop",
+        "href": "https://linux.die.net/Bash-Beginners-Guide/sect_09_01.html"
+      }
+    ],
+    "terminal": [
+      {
+        "PWD": "~",
+        "HOSTNAME": "work"
+      },
+      "$PS1 touch {a,b,c}.txt",
+      "$PS1 ls ?.txt",
+      "a.txt b.txt c.txt",
+      "$PS1 for f in *.txt ; <span class='yellow'>do</span> echo file is $f ; <span class='yellow'>done</span>",
+      "file is a.txt",
+      "file is b.txt",
+      "file is c.txt",
+      "$PS1 for color in red green blue ; do echo color is $color ; done",
+      "color is red",
+      "color is green",
+      "color is blue",
       "$PS1 "
     ]
   }
