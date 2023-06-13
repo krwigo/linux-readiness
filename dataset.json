@@ -646,7 +646,7 @@
         "HOSTNAME": "work"
       },
       "$PS1 touch {a,b,c}.txt",
-      "$PS1 ls ?.txt",
+      "$PS1 ls *.txt",
       "a.txt b.txt c.txt",
       "$PS1 for f in *.txt ; <span class='yellow'>do</span> echo file is $f ; <span class='yellow'>done</span>",
       "file is a.txt",
@@ -744,6 +744,41 @@
       "0 aspmx.l.google.com.",
       "5 alt1.aspmx.l.google.com.",
       "10 aspmx3.googlemail.com.",
+      "$PS1 "
+    ]
+  },
+  {
+    "prompt": "Applying mode <code>g+x</code> to an existing file with octal <code>644</code> yields which permissions?",
+    "accept": ["654", "rw-r-xr--"],
+    "reject": ["rw-r--r--", "777", "rwxrwxrwx", "755", "rw-r--r-x", "645"],
+    "explain": "Read, write, and execute permissions can be applied to the owning user (u), group (g), or other (o). Each group can be expressed as an octal <span class=option>0-7</span> or mode <span class=option>rwx</span>. Consider each binary bit as a light switch that can be 0=off or 1=on:<pre>rwx\n..\n000 = no permission\n001 = executable (1)\n010 = writable (2)\n100 = readable (4)\n..\n101 = readable + executable (5)\n110 = readable + writable (6)\n111 = readable + writable + executable (7)\n</pre>",
+    "links": [
+      {
+        "title": "Learning Materials - Topic 5.3",
+        "href": "https://learning.lpi.org/en/learning-materials/010-160/5/5.3/5.3_01/"
+      },
+      {
+        "title": "chmod(1) - Linux man page",
+        "href": "https://linux.die.net/man/1/chmod"
+      },
+      {
+        "title": "chown(1) - Linux man page",
+        "href": "https://linux.die.net/man/1/chown"
+      }
+    ],
+    "terminal": [
+      {
+        "PWD": "~"
+      },
+      "$PS1 umask",
+      "0022",
+      "$PS1 touch file.txt",
+      "$PS1 chmod -R 644 file.txt",
+      "$PS1 ls -l",
+      "-rw-<span class='yellow'>r--</span>r-- 1 $USERNAME $GROUPNAME 0 Jun 13 06:24 file.txt",
+      "$PS1 chmod -R g+x file.txt <span class=arrow>&larr;</span>",
+      "$PS1 ls -l",
+      "-rw-<span class='yellow'>r-x</span>r-- 1 $USERNAME $GROUPNAME 0 Jun 13 06:24 file.txt",
       "$PS1 "
     ]
   }
