@@ -17,7 +17,7 @@ import "./frontend.css";
 import dataset from "./dataset.json";
 
 const recurseEnv = (env, src, name) =>
-  src.replaceAll(/\$([A-Z0-9]+)/g, (whole, name) =>
+  src.replaceAll(/\$([A-Z][A-Z0-9]*)/g, (whole, name) =>
     recurseEnv(env, env[name] || "")
   );
 
@@ -140,9 +140,13 @@ function CardText({ data, config, onNext }) {
   }, [config.dataindex]);
 
   const cmp = data?.caseSensitive
-    ? (x) => data.accept.includes(x.trim())
+    ? (x) =>
+        data.accept
+          .concat(Array.isArray(data.acceptText) ? data.acceptText : [])
+          .includes(x.trim())
     : (x) =>
         data.accept
+          .concat(Array.isArray(data.acceptText) ? data.acceptText : [])
           .map((y) => y.toLowerCase())
           .includes(x.trim().toLowerCase());
 
@@ -456,12 +460,12 @@ function Main() {
     styles: ["cardtext"],
   });
 
-  const onNext = useCallback(() =>
+  const onNext = useCallback((dataindex, styleindex) =>
     setConfig((prev) => {
       let next = Object.assign({}, prev);
-      next.dataindex += 1;
+      next.dataindex += isNaN(+dataindex) ? 1 : dataindex;
       next.data = dataset[next.dataindex % dataset.length];
-      next.styleindex += 1;
+      next.styleindex += isNaN(+styleindex) ? 1 : styleindex;
       next.style = next.styles[next.styleindex % next.styles.length];
       for (let i = 0; i < dataset.length; i++) {
         if (
@@ -499,8 +503,14 @@ function Main() {
 
   useEffect(() => {
     const cb = (e) => {
-      if (e?.key == "n") {
+      if (e?.target?.nodeName == "INPUT") {
+        // prevent cardtext
+      } else if (e?.key == "n") {
         onNext();
+      } else if (e?.key == "d") {
+        onNext(1, 0);
+      } else if (e?.key == "s") {
+        onNext(0, 1);
       } else {
         console.log(e?.type, e);
       }

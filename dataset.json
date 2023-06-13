@@ -552,6 +552,7 @@
   {
     "prompt": "Where are critical operating system launched from on a Raspberry Pi device?",
     "accept": ["microSD"],
+    "acceptText": ["sd"],
     "reject": ["PXE", "CDROM", "BIOS", "CPU", "USB", "Wifi"],
     "explain": "Raspberry Pi devices are low-cost, card sized computers for small projects and educational environments. They do not contain hard disk or solid state drives. While most hardware versions include a <strong>microSD</strong> card slot, early versions included a full sized <strong>SD</strong> card slot. Network booting is possible but depends on firmware upgrades not included by manufacturers.",
     "links": [
@@ -880,6 +881,48 @@
       "$PS1 ls",
       "archive.zip  homework.txt",
       "$PS1"
+    ]
+  },
+  {
+    "prompt": "Which of the following programs are common command-line text editors?",
+    "accept": ["nano", "vi"],
+    "acceptText": ["pico", "vim"],
+    "reject": ["more", "less", "cut", "gedit", "awk", "code", "gcc", "ssh"],
+    "explain": "Many graphical text editors exist but command line text editors have advantages including lower protocol overhead and fewer dependencies. Nano is the continued efforts of pico from the pine email client project. Vi and vim are traditional text editors found in practically every Linux distribution.",
+    "links": [
+      {
+        "title": "Learning Materials - Topic 3.3 Lesson 1",
+        "href": "https://learning.lpi.org/en/learning-materials/010-160/3/3.3/3.3_01/"
+      },
+      {
+        "title": "nano(1) - Linux man page",
+        "href": "https://linux.die.net/man/1/nano"
+      },
+      {
+        "title": "vi(1) - Linux man page",
+        "href": "https://linux.die.net/man/1/vi"
+      }
+    ],
+    "terminal": [
+      {
+        "PWD": "~"
+      },
+      "$PS1 nano script.sh",
+      "<div class=invert>GNU nano 6.2                     script.sh</div>",
+      "#!/bin/bash",
+      "if [ -z \"$1\" ]",
+      "then",
+      "  echo my favorite color is Linux",
+      "else",
+      "  echo my favorite color is $1",
+      "fi",
+      "",
+      "               <span class=invert>[ Read 7 lines ]</span>",
+      "<span class=invert>^G</span> Help  <span class=invert>^O</span> Write Out  <span class=invert>^W</span> Where Is  <span class=invert>^K</span> Cut",
+      "<span class=invert>^X</span> Exit  <span class=invert>^R</span> Read File  <span class=invert>^\\</span> Replace   <span class=invert>^U</span> Paste",
+      "$PS1 ./script.sh purple",
+      "my favorite color is purple",
+      "$PS1 "
     ]
   }
 ]

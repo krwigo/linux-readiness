@@ -218,6 +218,11 @@ pre {
   color: transparent;
 }
 
+.typer .invert {
+  background-color: white;
+  color: black;
+}
+
 .arrow {
   font-weight: bold;
   margin-left: 0em;
