@@ -820,5 +820,66 @@
       "#HttpOnly_.www.redhat.com  TRUE  /  TRUE  1686680378  akaalb_prod_rhdc  1686680378~op=lb_prod_rhdc_rhdc:prod_rhdc_mpp_aws_us_west_2",
       "$PS1 "
     ]
+  },
+  {
+    "prompt": "Which command would display the contents of a compressed zip archive named <code>archive.zip</code>?",
+    "accept": ["unzip -l archive.zip"],
+    "reject": [
+      "tar -xf archive.zip",
+      "tar --list archive.zip",
+      "zip -x archive.zip",
+      "dezip --list archive.zip",
+      "lszip archive.zip"
+    ],
+    "styleIgnore": ["cardtext"],
+    "explain": "Not to be confused with tar \"tape archive\", zip and unzip are related to the zip format. Unzip has an <span class=option>-l</span> option to verbosely list archive contents without performing the extraction.",
+    "links": [
+      {
+        "title": "Learning Materials - Topic 3.1",
+        "href": "https://learning.lpi.org/en/learning-materials/010-160/3/3.1/3.1_01/"
+      },
+      {
+        "title": "zip(1) - Linux man page",
+        "href": "https://linux.die.net/man/1/zip"
+      },
+      {
+        "title": "unzip(1) - Linux man page",
+        "href": "https://linux.die.net/man/1/unzip"
+      }
+    ],
+    "terminal": [
+      {
+        "PWD": "~",
+        "USERNAME": "admin",
+        "GROUPNAME": "admins",
+        "HOSTNAME": "suse"
+      },
+      "$PS1 echo linux > homework.txt",
+      "$PS1 zip --help | head -n 3",
+      "Copyright (c) 1990-2008 Info-ZIP - Type 'zip -L' for software license.",
+      "Zip 3.0 (July 5th 2008). Usage:",
+      "<span class='yellow'>zip</span> [-options] [-b path] [-t mmddyyyy] [-n suffixes] <span class='yellow'>[zipfile list] [-xi list]</span>",
+      "$PS1 zip archive.zip homework.txt",
+      "  adding: homework.txt (stored 0%)",
+      "$PS1 rm homework.txt",
+      "$PS1 ls",
+      "archive.zip",
+      "$PS1 unzip --help | head -n 3",
+      "UnZip 6.00 of 20 April 2009, by Debian. Original by Info-ZIP.",
+      "Usage: <span class='yellow'>unzip</span> [-Z] [-opts[modifiers]] <span class='yellow'>file[.zip]</span> [list] [-x xlist] [-d exdir]",
+      "$PS1 unzip <span class='red'>-l</span> archive.zip",
+      "Archive:  archive.zip",
+      "  Length      Date    Time    Name",
+      "---------  ---------- -----   ----",
+      "        6  2019-06-13 20:28   homework.txt",
+      "---------                     -------",
+      "        6                     1 file",
+      "$PS1 unzip archive.zip",
+      "Archive:  archive.zip",
+      " extracting: homework.txt",
+      "$PS1 ls",
+      "archive.zip  homework.txt",
+      "$PS1"
+    ]
   }
 ]
