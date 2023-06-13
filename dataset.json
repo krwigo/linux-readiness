@@ -300,10 +300,10 @@
     "terminal": [
       { "PWD": "/var" },
       "$PS1 dpkg --list | grep <span class='red'>mariadb</span>",
-      "ii <span class='red'>mariadb</span>-client-10.3      1:10.3.18-0+deb10u1 amd64 MariaDB database client",
-      "ii <span class='red'>mariadb</span>-client-core-10.3 1:10.3.18-0+deb10u1 amd64 MariaDB database core",
-      "ii <span class='red'>mariadb</span>-server-10.3      1:10.3.18-0+deb10u1 amd64 MariaDB database server",
-      "ii <span class='red'>mariadb</span>-server-core-10.3 1:10.3.18-0+deb10u1 amd64 MariaDB database core",
+      "ii <span class='red'>mariadb</span>-client-10.3      1:10.3.18-0+deb1 amd64 MariaDB database client",
+      "ii <span class='red'>mariadb</span>-client-core-10.3 1:10.3.18-0+deb1 amd64 MariaDB database core",
+      "ii <span class='red'>mariadb</span>-server-10.3      1:10.3.18-0+deb1 amd64 MariaDB database server",
+      "ii <span class='red'>mariadb</span>-server-core-10.3 1:10.3.18-0+deb1 amd64 MariaDB database core",
       "$PS1 mariadb",
       "Welcome to the MariaDB monitor. Commands end with ; or \\g.",
       "Your MariaDB connection id is 8360",
@@ -751,7 +751,7 @@
     "prompt": "Applying mode <code>g+x</code> to an existing file with octal <code>644</code> yields which permissions?",
     "accept": ["654", "rw-r-xr--"],
     "reject": ["rw-r--r--", "777", "rwxrwxrwx", "755", "rw-r--r-x", "645"],
-    "explain": "Read, write, and execute permissions can be applied to the owning user (u), group (g), or other (o). Each group can be expressed as an octal <span class=option>0-7</span> or mode <span class=option>rwx</span>. Consider each binary bit as a light switch that can be 0=off or 1=on:<pre>rwx\n..\n000 = no permission\n001 = executable (1)\n010 = writable (2)\n100 = readable (4)\n..\n101 = readable + executable (5)\n110 = readable + writable (6)\n111 = readable + writable + executable (7)\n</pre>",
+    "explain": "Read, write, and execute permissions can be applied to the owning user (u), group (g), or other (o). Each group can be expressed as an octal <span class=option>0-7</span> or mode <span class=option>rwx</span>. Consider each binary bit as a light switch that can be off (0) or on (1):<pre>rwx\n..\n000 = no permission\n001 = executable (1)\n010 = writable (2)\n100 = readable (4)\n..\n011 = writable + executable (3)\n101 = readable + executable (5)\n110 = readable + writable (6)\n111 = readable + writable + executable (7)\n</pre>",
     "links": [
       {
         "title": "Learning Materials - Topic 5.3",
@@ -779,6 +779,45 @@
       "$PS1 chmod -R g+x file.txt <span class=arrow>&larr;</span>",
       "$PS1 ls -l",
       "-rw-<span class='yellow'>r-x</span>r-- 1 $USERNAME $GROUPNAME 0 Jun 13 06:24 file.txt",
+      "$PS1 "
+    ]
+  },
+  {
+    "prompt": "Why are web browsing cookies considered to be harmful?",
+    "accept": ["stored information may be used to track browsing habits"],
+    "reject": [
+      "malicious code can be injected across websites",
+      "cookies require lots of hard disk drive space",
+      "advertisements can be customized by users",
+      "private web browsers leak sensitive information from regular cookies",
+      "cookies cannot be disabled"
+    ],
+    "styleIgnore": ["cardtext"],
+    "explain": "Web browsers request content from web servers using a request-response protocol. Responses may provide a cache expiration date to reduce the number of requests. The protocol does not correlate multiple requests since the browser may not need to request cached content. Cookies are small pieces of information stored as pairs of keys and values. For example, <code>Name=Smith</code> or <code>Course=Linux</code>. E-commerce websites use session tracking cookies to temporarily persist information between requests. Websites need only set the session ID to look up accounting information in the backend. Some third-party advertisers use tracking cookies for concerning activities.<pre> domain: www.redhat.com\n   name: akaalb_prod_rhdc\n  value: 1686680378~op=lb_prod_rhdc_rhdc:prod_rhdc_mpp_aws_us_west_2\n   path: /\n   subs: TRUE\n  https: TRUE\nexpires: 1686680378</pre>",
+    "links": [
+      {
+        "title": "Learning Materials - Topic 1.4",
+        "href": "https://learning.lpi.org/en/learning-materials/010-160/1/1.4/1.4_01/"
+      },
+      {
+        "title": "curl(1) - Linux man page",
+        "href": "https://linux.die.net/man/1/curl"
+      },
+      {
+        "title": "Cookie file format",
+        "href": "https://github.com/curl/curl/blob/master/docs/HTTP-COOKIES.md#cookie-file-format"
+      }
+    ],
+    "terminal": [
+      {
+        "PWD": "~",
+        "USERNAME": "guest",
+        "GROUPNAME": "guests",
+        "HOSTNAME": "rhel"
+      },
+      "$PS1 curl -sL <span class='yellow'>--cookie-jar cookie.jar</span> -o /dev/null redhat.com",
+      "$PS1 cat cookie.jar",
+      "#HttpOnly_.www.redhat.com  TRUE  /  TRUE  1686680378  akaalb_prod_rhdc  1686680378~op=lb_prod_rhdc_rhdc:prod_rhdc_mpp_aws_us_west_2",
       "$PS1 "
     ]
   }
