@@ -587,7 +587,7 @@
     ]
   },
   {
-    "prompt": "Which command(s) are command line web clients?",
+    "prompt": "Which program(s) are command line web clients?",
     "accept": ["wget", "cURL"],
     "reject": ["Apache", "NGINX", "GIMP", "figlet", "wput", "Firefox", "yum"],
     "explain": "Web clients and servers typically communicate through the HTTP protocol encapsulated with SSL encryption. Web browsers are great for displaying visual renderings of web pages but are not necessary to download files or upload payloads. <code>wget</code> and <code>curl</code> are common command line programs used in conjunction with web server requests.",
