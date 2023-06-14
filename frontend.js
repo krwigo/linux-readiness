@@ -166,7 +166,13 @@ function CardText({ data, config, onNext }) {
             value={guess}
             onChange={(e) => setGuess(e.target.value)}
           />
-          {reveal && <div>{data.accept.join(", ")}</div>}
+          {reveal && (
+            <div>
+              {data.accept
+                .concat(Array.isArray(data.acceptText) ? data.acceptText : [])
+                .join(", ")}
+            </div>
+          )}
         </label>
       </div>
       <div className="buttons">
