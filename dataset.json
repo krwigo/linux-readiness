@@ -946,12 +946,56 @@
         "PWD": "~",
         "SUM": "5"
       },
-
       "$PS1 SUM=$(expr 2 + 3)",
       "$PS1 echo '\\$SUM' <span class=arrow>&larr;</span>",
       "\\$SUM",
       "$PS1 echo \\$SUM",
       "$SUM",
+      "$PS1 "
+    ]
+  },
+  {
+    "prompt": "What does the first character of each line represent in long listing format directory listing?",
+    "accept": ["file type"],
+    "acceptText": ["filetype", "type"],
+    "reject": [
+      "regular file",
+      "sticky bit",
+      "super user",
+      "file size",
+      "compression level"
+    ],
+    "explain": "The first column of a directory listing in long listing format <span class=option>ls -l</span> shows the type and permissions. The first <strong>character</strong> indicates the entry type which defaults to a regular file <span class=option>-</span>. Directories are represented by <span class=option>d</span>, Block devices by <span class=option>b</span>, and Symbolic links by <span class=option>l</span>.",
+    "links": [
+      {
+        "title": "Learning Materials - Topic 3.1",
+        "href": "https://learning.lpi.org/en/learning-materials/010-160/5/5.3/5.3_01/"
+      },
+      {
+        "title": "ls(1) - Linux man page",
+        "href": "https://linux.die.net/man/1/ls"
+      },
+      {
+        "title": "How to Use the ls Command in Linux",
+        "href": "https://linuxhint.com/ls_command/"
+      }
+    ],
+    "terminal": [
+      {
+        "PWD": "~",
+        "USERNAME": "root",
+        "GROUPNAME": "root"
+      },
+      "$PS1 ls <span class='yellow'>-l</span> -h /boot",
+      "<span class='red'>-</span>rw-r--r-- 1 root root 202K Jan 30  2021 config-4.19.0-14-amd64",
+      "<span class='red'>d</span>rwxr-xr-x 5 root root 4.0K Mar 24  2021 grub <span class=arrow>&larr;</span>",
+      "-rw-r--r-- 1 root root  25M Mar 24  2021 initrd.img-4.19.0-14-amd64",
+      "-rw-r--r-- 1 root root 5.1M Jan 30  2021 vmlinuz-4.19.0-14-amd64",
+      "$PS1 ls <span class='yellow'>-l</span> -d /dev/sd*",
+      "<span class='red'>b</span>rw-rw---- 1 root disk 8, 0 Jun 12 23:41 /dev/sda",
+      "brw-rw---- 1 root disk 8, 1 Jun 12  2021 /dev/sda1",
+      "brw-rw---- 1 root disk 8, 2 Jun 12  2021 /dev/sda2",
+      "brw-rw---- 1 root disk 8, 5 Jun 12  2021 /dev/sda5",
       "$PS1 "
     ]
   }
