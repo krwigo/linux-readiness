@@ -924,5 +924,35 @@
       "my favorite color is purple",
       "$PS1 "
     ]
+  },
+  {
+    "prompt": "What is the output displayed by the following script?<pre>SUM=$(expr 2 + 3)\necho '$SUM'</pre>",
+    "accept": ["$SUM"],
+    "acceptText": ["${SUM}"],
+    "reject": ["5", "6", "0", "-1", "404", "Error"],
+    "explain": "The value assigned to the SUM variable is 5 but the apostrophes (single quotes) prevent bash from interpreting variables or expressions. The displayed text is '$SUM' because the dollar sign was taken literally. Backslashes can also escape characters but the two methods should not be combined.",
+    "links": [
+      {
+        "title": "Learning Materials - Topic 2.1 Lesson 1",
+        "href": "https://learning.lpi.org/en/learning-materials/010-160/2/2.1/2.1_01/"
+      },
+      {
+        "title": "Bash Guide for Beginners - 3.3. Quoting characters",
+        "href": "https://linux.die.net/Bash-Beginners-Guide/sect_03_03.html"
+      }
+    ],
+    "terminal": [
+      {
+        "PWD": "~",
+        "SUM": "5"
+      },
+
+      "$PS1 SUM=$(expr 2 + 3)",
+      "$PS1 echo '\\$SUM' <span class=arrow>&larr;</span>",
+      "\\$SUM",
+      "$PS1 echo \\$SUM",
+      "$SUM",
+      "$PS1 "
+    ]
   }
 ]

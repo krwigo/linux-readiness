@@ -17,8 +17,10 @@ import "./frontend.css";
 import dataset from "./dataset.json";
 
 const recurseEnv = (env, src, name) =>
-  src.replaceAll(/\$([A-Z][A-Z0-9]*)/g, (whole, name) =>
-    recurseEnv(env, env[name] || "")
+  src.replaceAll(/\\?\$([A-Z][A-Z0-9]*)/g, (whole, name) =>
+    whole?.[0] == "\\"
+      ? "$" + recurseEnv(env, whole.slice(2))
+      : recurseEnv(env, env[name] || "")
   );
 
 const randomSort = (a, b) => Math.random() - 0.5;
