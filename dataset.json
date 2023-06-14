@@ -415,7 +415,7 @@
     "prompt": "The shebang is represented by which two letter sequence?",
     "accept": ["#!"],
     "reject": ["$$", "$?", "/?", "##", "$#", "--"],
-    "explain": "The two letter <span class=option>#!</span> shebang must be on the first line of a shell script to identify which interpreter will be executed. Common interpreters include <code>/bin/bash</code>, <code>/bin/sh</code>, <code>/usr/bin/perl</code>, and <code>/usr/bin/python3</code>. Executable shell scripts should have the <span class=option>+x</span> permission.",
+    "explain": "The two letter <span class=option>#!</span> shebang must be on the first line of a shell script to identify which interpreter will be executed. Common interpreters include <code>/usr/bin/bash</code>, <code>/bin/sh</code>, <code>/usr/bin/perl</code>, and <code>/usr/bin/python3</code>. Executable shell scripts should have the <span class=option>+x</span> permission.",
     "links": [
       {
         "title": "Learning Materials - Topic 3.3 Lesson 2",
